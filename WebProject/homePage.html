@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Game Login Page</title>
+<!--user login and home page theme landing css and webfavicon icon used below-->
+<link rel="stylesheet" href="css/mastercss.css" >
+<link rel="stylesheet" href="css/all.css" >
+<link rel="stylesheet" href="css/style.css" >
+<link rel="stylesheet" href="css/style1.css" >
+<link rel="shortcut icon" href="images/faviconicon.jpg">
+</head>
+<body>
+<div class="headbot">
+<div>
+<a href="#">
+<img src="images/logo.jpg" alt="image">
+</a>
+</div>
+      <div style="font-size: 45px; font-weight: bold;">Dixit Game Player
+      <div style="font-size:12px; font-style:italic; font-family:'Verdana', Times, serif; font-weight:bold; color:black;">(College Assignment Game on Study)</div>
+      <div style="font-size:16px; font-family:'Verdana', Times, serif; font-weight:bold; color:blue;">Developed By : Sowmya Reddy Ranamalla</div>
+      </div>
+</div>
+<center><a href="#">  <img style="width:500px;height:200x;" src="images/dixitlogo.png" alt="image"> </a></center>
+<!---Form start --->
+        <!-- Header -->
+        <div class="login"><center>
+          <h1>Player Name</h1></center>
+          <div class="links" >
+            <a href="homePage.html" class="active">Play_Game</a>
+            <a href="signupPage.html" class="">Player_Signup</a>
+          </div>
+          <form action="gameBoard.html" method="GET">
+            <label for="username">
+              <i class="fas fa-user"></i>
+            </label>
+            <input type="text" name="username" placeholder="Player Name"  id="username" autocomplete="off" autofocus required >
+
+            <label for="password"><i class="fas fa-share"></i> </label>
+            <select class="selectdrop" name="palyerselect" id="palyerselect" required>
+              <option value="">--Select Player--</option>
+              <option value="3">3 Player</option>
+              <option value="4">4 Player</option>
+            </select>
+          </br></br></br>
+  <div>
+    <!--user login and home page theme landing css and webfavicon icon used below-->
+          <input type="radio" name="1" id="img1" checked>
+          <img id="a" src="images/selectcards/card_01.jpg"  width="60" height="60" alt="">
+
+          <input type="radio" name="1" id="img1">
+          <img id="b" src="images/selectcards/card_02.jpg" width="60" height="60" alt="">
+
+          <input type="radio" name="1" id="img1" >
+          <img id="c" src="images/selectcards/card_03.jpg" width="60" height="60" alt="">
+
+          <input type="radio" name="1" id="img1" >
+          <img id="d" src="images/selectcards/card_04.jpg" width="60" height="60" alt="">
+          </br>
+  </div>
+           <!-- <div class="msg">{{ msg }}</div>  ## If Login Error Msg shown this label
+            </div>-->
+          </br></br>
+                    <button type="submit" value="Login" onclick="getData();">
+                    <span><i style="font-size: 20px;" class="fas fa-gamepad"></i>  Play Game  </span>
+                    </button>
+          </form>
+        </div>
+        <!-- end Header -->
+<!--*****End form*****-->
+<script>
+    function getData()
+    {
+    //gettting the values
+    var user = document.getElementById("username").value;
+    var playr = document.getElementById("palyerselect").value; 
+    //var img = document.getElementById("images/selectcards/card_01.jpg").value; 
+
+    //saving the values in local storage
+    localStorage.setItem("txtValue", user);
+    localStorage.setItem("txtValue1", playr);
+    //localStorage.setItem("txtValue2", img);
+
+    }
+</script>
+
+
+</div>
+</body>
+</html>

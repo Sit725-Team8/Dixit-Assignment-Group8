@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Game Login Page</title>
+
+<link rel="stylesheet" href="css/mastercss.css" >
+<link rel="stylesheet" href="css/all.css" >
+<link rel="stylesheet" href="css/style.css" >
+<link rel="stylesheet" href="css/style1.css" >
+<link rel="shortcut icon" href="images/faviconicon.jpg">
+
+</head>
+<body>
+<div class="headbot">
+<div>
+<a href="#">
+<img src="images/logo.jpg" alt="image">
+</a>
+</div>
+      <div style="font-size: 45px; font-weight: bold;">Dixit Game Player
+      <div style="font-size:12px; font-style:italic; font-family:'Verdana', Times, serif; font-weight:bold; color:black;">(College Assignment Game on Study)</div>
+        <div style="font-size:16px; font-family:'Verdana', Times, serif; font-weight:bold; color:blue;">Developed By : Sowmya Reddy Ranamalla</div>
+      </div>
+</div>
+
+<center>  <a href="#">  <img style="width:500px;height:200x;" src="images/dixitlogo.png" alt="image"> </a>  </center>
+<!---Form start --->
+<!-- Header -->
+<div class="login"><center>
+  <h1>SignUp User</h1></center>
+  <div class="links" >
+    <a href="homePage.html" class="">Play_Game</a>
+        <a href="signupPage.html" class="active">Player_Signup</a>
+  </div>
+  <form action="signupPage.html" method="post">
+    <label for="username">   <i class="fas fa-sync"></i> </label>
+    <input type="text" name="Email" placeholder="email id" id="email" autocomplete="off" autofocus required >
+    
+    <label for="username">   <i class="fas fa-user"></i> </label>
+    <input type="text" name="username" placeholder="User Name" maxlength="7" id="username" autocomplete="off" required >
+    
+    <label for="password"><i class="fas fa-lock"></i>    </label>
+    <input type="password" name="password" placeholder="password" maxlength="4" id="password" autocomplete="off" required>
+            
+   <!-- <div class="msg">{{ msg }}</div>  ## If Login Error Msg shown this label
+    </div>-->
+            
+            <button type="submit" value="Login">
+            <span><i class="fas fa-user-check"></i>  SignUp User  </span>
+            </button>
+  </form>
+</div>
+<!-- end Header -->
+<!--*****End form*****-->
+
+</div>
+</body>
+</html>
