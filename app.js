@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require('body-parser');
 const PORT = 3030
-const mongo = require('./services/MongoService')
+const services = require('./services')
 const routers = require('./routes')
 
 let app = new express();
@@ -15,7 +15,7 @@ app.get('/result', (req,res)=>{
     
 })
 //setup database
-mongo.startDB()
+services.mongo.startDB()
 
 
 app.listen(PORT,()=>{

@@ -4,10 +4,11 @@
   "description": "Assignment 3 code group project",
   "main": "index.js",
   "dependencies": {
-    "mongodb": "^3.6.0",
     "body-parser": "^1.19.0",
     "express": "*",
-    "jquery": "*"
+    "jquery": "*",
+    "mongodb": "^3.6.0",
+    "socket.io": "^2.3.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
