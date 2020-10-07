@@ -21,7 +21,30 @@ const newPlayer = () => {
 
     })
 }
+//testing socket functions 
+let socket = null;
+const sendMessage = ()=>{
+    let message = $('#socketInput').val();
+    
+    //try to use user id
+    let payload={
+        'story':message,
+        'senderId':'test'
+    }
+    socket.emit('test-socket',payload)
+
+}
 $(document).ready(() => {
     console.log('Ready')
     $('#profileButton').click(newPlayer);
+    
+    //testing socket functions 
+    $('#socketButton').click(sendMessage)
+    socket = io();
+    socket.on('test-socket',data=>{
+        $('#socketOutput').append($('<li>').text(data.story))
+    })
+    
+
+
 })
