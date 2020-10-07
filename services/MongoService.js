@@ -40,11 +40,12 @@ const insertProfile = (objectToInsert, res) => {
 
 const getProfile = (res) => {
   profileCollection.find().toArray((err,result)=>{
-    if(err) throw err;
-    res.send(result)
+    if(err) {throw err}
+    else{
+      res.send(result)
+    }
   }
-
-  )
+ )
 }
 
 
