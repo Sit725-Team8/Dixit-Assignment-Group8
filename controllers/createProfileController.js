@@ -8,7 +8,6 @@ const displayPlayers=(res)=>{
     database.getProfile(res);
 }
 
-
 module.exports={
     addPlayer,
     displayPlayers
