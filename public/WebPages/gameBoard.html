@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Game Login Page</title>
+<link rel="stylesheet" href="css/mastercss.css" >
+<link rel="stylesheet" href="css/all.css" >
+
+<link rel="shortcut icon" href="images/faviconicon.jpg">
+<!--GameBoard Html page background styles-->
+<style>
+body {
+	   font-family: "Gudea", sans-serif;
+     background-image: url(images/dixit_background.jpg);
+     width: 100%;
+     height: 100%;
+   }
+</style>
+<!--  Game Board Table Styles-->
+<style type="text/css">
+
+.tftable {font-size:14px;color:yellow;width:35%;border-width: 1px;border-color: #9dcc7a;border-collapse: collapse; text-align:center;}
+.tftable th {font-size:14px;background-color:#abd28e;border-width: 1px;padding: 2px;border-style: solid;border-color: #9dcc7a;text-align:center;}
+.tftable td {font-family: "Consolas", Times New Roman, Times, serif !important; font-weight: bold; text-align:justify; font-size:14px;
+border-width: 1px;padding: 1px;border-style: solid;border-color: #9dcc7a;text-align:center;}
+
+</style>
+
+</head>
+<body>
+<div class="headbot"><div>
+<a href="#"><img src="images/logo.jpg" alt="image"></a>
+</div>
+      <div style="font-size: 45px; font-weight: bold;">Dixit Game Player
+      <div style="font-size:12px; font-style:italic; font-family:'Verdana', Times, serif; font-weight:bold; color:black;">(College Assignment Game on Study)</div>
+      <div style="font-size:16px; font-family:'Verdana', Times, serif; font-weight:bold; color:blue;">Developed By : Sowmya Reddy Ranamalla</div>
+</div>
+</div>
+<div style="text-align: center; color: red; font-size: 18px;">
+</br></br>
+  User Name : <span id="data"> name</span>&nbsp;&nbsp;&nbsp;&nbsp;|| &nbsp;&nbsp;&nbsp;&nbsp;  
+  Select Player : <span id="data1"> select player</span>   &nbsp;&nbsp;&nbsp;&nbsp; ||   &nbsp;&nbsp;&nbsp;&nbsp; 
+<a href="homePage.html" value="Logout"> <span style="text-align: right; color: red; font-size: 18px;"><i class="fas fa-power-off"></i>  Close Game  </span>  </a>
+</div>
+<!---Form Start--->
+</br></br>
+<center>
+  <table class="tftable" cellspacing="0" border="0"><colgroup span="8" width="64"></colgroup>
+    <tr>
+      <td  colspan=8 style="background-color: springgreen; color: black; font-size: 22px;">Dixit Game Playing Board</td>
+    </tr>
+    <tr>
+      <td colspan=2 style="background-color: darkorchid;" >::Score Board::</td>
+
+      <td  colspan=4  ><b>Player 3</b></td>
+      <td  colspan=2 rowspan=7  ></td>
+    </tr>
+    <tr>
+      <td  >PlyName</td>
+      <td  >Score</td>
+      <!--Below image please assign in from database randomly (This is only Example Link)-->
+      <td  rowspan=5  ><img id="a" src="images/GameCard/1.png" width="60" height="80" alt=""></td>
+      <td  rowspan=5  ><img id="a" src="images/GameCard/2.png" width="60" height="80" alt=""></td>
+      <td  rowspan=5  ><img id="a" src="images/GameCard/3.png" width="60" height="80" alt=""></td>
+      <td  rowspan=5  ><img id="a" src="images/GameCard/4.png" width="60" height="80" alt=""></td>
+    </tr>
+    <tr>
+      <td  >Player_1</td>
+      <td  >0</td>
+    </tr>
+    <tr>
+      <td  >Player_2</td>
+      <td  >0</td>
+    </tr>
+    <tr>
+      <td  >Player_3</td>
+      <td  >0</td>
+    </tr>
+    <tr>
+      <td  >Palyer_4</td>
+      <td  >0</td>
+    </tr>
+    <tr>
+      <td  ><br></td>
+      <td  ><br></td>
+      <td  colspan=2  ><input type="button" value="Vote" name="Player3_Vote" id="Player3_Vote"></td>
+      <td  colspan=2  ><input type="button" value="Guess" name="Player3_Guess" id="Player3_Guess"></td>
+    </tr>
+    <tr>
+      <td  colspan=2 height="20"  valign=top><b>Player 2</b></td>
+      <td  colspan=4  >Game Board</td>
+      <td  colspan=2  valign=top><b>Player 4</b></td>
+    </tr>
+    <tr>
+      <td ><input type="button" value="Vote" name="Player2_Vote" id="Player2_Vote"></td>
+      <td ><input type="button" value="Guess" name="Player2_Guess" id="Player2_Guess"></td>
+      <td  colspan=2 rowspan=6  ><br></td>
+      <td  colspan=2 rowspan=6  ><br></td>
+      <td ><input type="button" value="Vote" name="Player4_Vote" id="Player4_Vote"></td>
+      <td ><input type="button" value="Guess" name="Player4_Guess" id="Player4_Guess"></td>
+    </tr>
+    <tr>
+            <!--Below image please assign in from database randomly (This is only Example Link)-->
+      <td  rowspan=5 valign=top><img id="a" src="images/GameCard/5.png" width="60" height="80" alt=""></td>
+      <td  rowspan=5  valign=top><img id="a" src="images/GameCard/6.png" width="60" height="80" alt=""></td>
+      <td  rowspan=5  valign=top><img id="a" src="images/GameCard/7.png" width="60" height="80" alt=""></td>
+      <td  rowspan=5  valign=top><img id="a" src="images/GameCard/8.png" width="60" height="80" alt=""></td>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+      <td  rowspan=6  valign=top><br><img id="a" src="images/GameCard/9.png" width="60" height="80" alt=""><br><br></td>
+      <td  rowspan=6  valign=top><br><img id="a" src="images/GameCard/10.png" width="60" height="80" alt=""><br></td>
+      
+      
+      <!--This Below Box assign pic from user vote one by one-->
+      <td  colspan=2 rowspan=6  ></td>
+      <td  colspan=2 rowspan=6  ></td>
+
+      <td  rowspan=6  ><img id="a" src="images/GameCard/11.png" width="60" height="80" alt=""></td>
+      <td  rowspan=6  ><img id="a" src="images/GameCard/12.png" width="60" height="80" alt=""></td>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+      <td  height="20"  valign=top><br></td>
+      <td   valign=top><br></td>
+      <td  colspan=2  ><input type="button" value="Vote" name="Player1_Vote" id="Player1_Vote"></td>
+      <td  colspan=2  ><input type="button" value="Guess" name="Player1_Guess" id="Player1_Guess"></td>
+      <td   valign=top><br></td>
+      <td   valign=top><br></td>
+    </tr>
+    <tr>
+      <td  colspan=2 rowspan=6  ><br></td>
+      <!--Below image please assign in from database randomly (This is only Example Link)-->
+      <td  rowspan=5  ><img id="a" src="images/GameCard/13.png" width="60" height="80" alt=""></td>
+      <td  rowspan=5  ><img id="a" src="images/GameCard/14.png" width="60" height="80" alt=""></td>
+      <td  rowspan=5  ><img id="a" src="images/GameCard/15.png" width="60" height="80" alt=""></td>
+      <td  rowspan=5  ><img id="a" src="images/GameCard/16.png" width="60" height="80" alt=""></td>
+      <td  colspan=2 rowspan=6  ><input type="button" value="Finish Game" style="background-color: darkviolet; height: 40px; width: 100px; color: white;" name="finishgame" id="finishgame"></td>
+      </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+      <td  colspan=4  ><b>Player 1</b></td>
+    </tr>
+  </table>
+
+
+</center>
+<!---End Form--->
+<script>
+  document.getElementById("data").innerHTML=localStorage.getItem("txtValue");
+  document.getElementById("data1").innerHTML=localStorage.getItem("txtValue1");
+ // document.getElementById("selectimage").src=localStorage.getItem("txtValue2");
+</script> 
+</div>
+</body>
+</html>
