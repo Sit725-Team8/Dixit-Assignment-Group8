@@ -10,7 +10,10 @@ app.use(bodyParser.json());
 
 app.use('/createProfile', routers.creatProfile.createProfileRoute)
 
-
+app.get('/result', (req,res)=>{
+    mongo.getProfile(res);
+    
+})
 //setup database
 services.mongo.startDB()
 
