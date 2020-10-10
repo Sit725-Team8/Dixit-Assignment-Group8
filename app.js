@@ -15,6 +15,9 @@ app.use('/createProfile', routers.creatProfile.createProfileRoute)
 
 services.socket.openSocket(io)
 
+app.get('/result', (req,res)=>{
+    services.mongo.getProfile(res) 
+})
 //setup database
 services.mongo.startDB()
 

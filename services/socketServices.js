@@ -1,4 +1,3 @@
-const { data } = require("jquery");
 
 const socketIo = (io)=>{
 
