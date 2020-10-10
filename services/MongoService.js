@@ -8,6 +8,7 @@ const client = new MongoClient(uri, {
   useNewUrlParser: true
 })
 
+let userIdArray=[]
 
 //connect to the database
 let profileCollection
@@ -21,26 +22,34 @@ const openConnection = () => {
   })
 }
 
+//insert the user data into database 
 const insertProfile = (objectToInsert, res) => {
   profileCollection.insertOne(objectToInsert, (err, result) => {
     if (err) {
       console.log(err);
     } else {
+      userIdArray.push(objectToInsert._id)
+      console.log('after push');
+      console.log(userIdArray);
       res.json({
         message: 'inserted',
-        data: result
+        Id:objectToInsert._id,
+        name:objectToInsert.name
       })
     }
   })
 }
 
+//find the user data 
+//not used for now 
 const getProfile = (res) => {
   profileCollection.find().toArray((err,result)=>{
-    if(err) throw err;
-    res.send(result)
+    if(err) {throw err}
+    else{
+      res.send(result)
+    }
   }
-
-  )
+ )
 }
 
 
@@ -48,5 +57,6 @@ const getProfile = (res) => {
 module.exports = {
   startDB: openConnection,
   insertProfile,
-  getProfile
+  getProfile,
+  userIdArray
 }
