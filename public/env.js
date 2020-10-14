@@ -1,8 +1,8 @@
 //get the name from input filed
 
 //two variables to identify the user 
-let userId;
-let userName;
+export let userId;
+export let userName;
 
 //wrap it in a package and sends it to the server
 const newPlayer = () => {
@@ -35,32 +35,14 @@ const newPlayer = () => {
 }
 
 
-//testing socket functions 
-let socket = null;
+
 
 $(document).ready(() => {
     console.log('Ready')
     //create a new player
     $('#profileButton').click(newPlayer);
 
-    //testing socket functions 
-    $('#socketButton').click(() => {
-        let message = $('#socketInput').val();
     
-        //the stroy with user id and name 
-        let payload = {
-            'story': message,
-            'senderId': userId,
-            'senderName': userName
-        }
-        //emit the payload to the server side 
-        socket.emit('test-socket', payload)
-    
-    })
-    socket = io();
-    socket.on('test-socket', data => {
-        $('#socketOutput').append($('<li>').text(data.story))
-    })
 
     //test the are the user id and user name correct 
     $('#testButton').click(() => {
@@ -72,3 +54,4 @@ $(document).ready(() => {
 
 
 })
+
