@@ -11,6 +11,10 @@
     <!-- materialize JavaScrip -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="env.js"></script>
+    
+    <!-- socket.io package -->
+    <script src="/socket.io/socket.io.js"></script>
+
 
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -24,10 +28,12 @@
         <div class="row">
             
             <div class="input-field col s12 center-align">
-                <div class="row" style="font-size: larger;"> Please Input Your Name</div>
-                <input id="inputName" type="text" class="validate">
+                <!-- <div class="row" style="font-size: larger;"> Please Input Your Name</div> -->
+                <!-- <input id="inputName" type="text" class="validate"> -->
                 <!-- <label class="active" for="input_name">Please Input Your Name</label> -->
-                <a class="waves-effect waves-light btn" id="profileButton">Submit</a>
+                <a class="waves-effect waves-light btn" href="./game.html" id="profileButton">
+                Start Game
+            </a>
             </div>
             
         </div>
@@ -39,7 +45,14 @@
 
     </div>
 
-
+    <div class="row">
+        <div class="input-field col s6">
+          <input id="socketInput" type="text" class="validate">
+          <label class="active" for="socket">First Name</label>
+        </div>
+      </div>
+      <a class="waves-effect waves-light btn" id="socketButton">button</a>
+      <div id="socketOutput"> </div>
 
 </body>
 
