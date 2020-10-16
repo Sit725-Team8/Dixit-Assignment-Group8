@@ -1,4 +1,5 @@
-
+const cal = require('./calculatorService')
+let resultArray = []
 //started the socket io
 const socketIo = (io)=>{
     //while a user connected 
@@ -13,9 +14,21 @@ const socketIo = (io)=>{
         console.log(testData);
         io.emit('test-socket',testData)
     })
-    
-    
+    socket.on('send-result', data=>{
+        console.log(data);
+        resultArray.push(data)
+        //for test propose 
+        if (resultArray.length==4){
+            let array = cal.calculate(resultArray)
+            console.log('test cal result');
+            console.log(array);
+        }
     })
+
+
+
+    })
+    
     
     
 }
@@ -25,5 +38,6 @@ const socketIo = (io)=>{
 
 module.exports={
     openSocket: socketIo,
+    resultArray
     
 }
