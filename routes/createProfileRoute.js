@@ -7,11 +7,9 @@ let router = Express.Router()
 router.post('/',(req,res)=>{
     let player = req.body;
     console.log(player);
-    res.render('game');
-    controller.addPlayer(player,res)
+    //res.render('game');
+  controller.addPlayer(player,res)
 })
-
-
 
 
 

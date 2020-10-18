@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" const="text/html;charset=UTF-8" />
+    <link href="http://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="style.css" >
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <title>Game</title>
+    <style type="text/css">
+      .card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+  border-radius: 5px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+img {
+  border-radius: 5px 5px 0 0;
+}
+
+
+    </style>
+  </head>
+
+  <body>
+   
+   <!--  <section>
+      <div id="change_username">
+	<input id="username" type="text" />
+	<button id="send_username" type="button">Change username</button>
+      </div>
+    </section> -->
+
+    <section id="chatroom">
+      <section id="feedback"></section>
+    </section>
+
+    
+
+   <!--  <section id="input_zone"> 
+      <input id="message" class="vertical-align" type="text" />
+      <button id="send_message" class="vertical-align" type="button">Send</button>
+    </section> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    <script type="text/javascript">
+      var jq = $.noConflict();
+
+jq(function(){
+    //make connection
+  var socket = io.connect('http://localhost:5000')
+
+  //buttons and inputs
+  var message = jq("#message")
+  var username = jq("#username")
+  var send_message = jq("#send_message")
+  var send_username = jq("#send_username")
+  var chatroom = jq("#chatroom")
+  var feedback = jq("#feedback")
+
+  //Emit message
+   socket.emit('new_message', {message : message.val()})
+
+
+  send_message.click(function(){
+    socket.emit('new_message', {message : message.val()})
+  })
+
+  //Listen on new_message
+  socket.on("new_message", (data) => {
+    feedback.html('');
+    message.val('');
+     chatroom.append(`<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .container{
+      width:100%;
+      height: 100vh;
+      
+    }
+
+    .top{
+      width: 100%;
+      height: 20vh;
+      
+
+    }
+    .left{
+      width:10vw;
+      height: 50%; 
+      
+      float: left;
+    }
+    .right{
+      width:10vw;
+      height: 50%; 
+      
+      float: right;
+      color: white;
+    }
+    .bottom {
+          position: absolute;
+    bottom: 0px;
+    
+    height: 20vh;
+    width: 100vw;
+    color: white;
+      
+    }
+
+    .centercontent {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card{
+      width:100px;
+      height: 150px;
+      margin: 2px;
+      border-radius: 5px; 
+      background-color: #000; 
+      color: white;
+    }
+    .card:hover{
+      transform: scale(0.9);
+
+      border: 2px solid white;
+    }
+
+    .centercontainer{
+
+      width:70vw;
+      
+        margin-left:17vw;
+        height: 55vh;
+    }
+  </style>
+</head>
+<body>
+
+
+<div class="container">
+    
+    <div class="top centercontent">
+      
+      <div class="card centercontent" 
+      style="background-image: url('/images/3.png');
+    background-size: cover;position: center;
+      " 
+      >
+        
+      </div>
+      <div class="card centercontent"
+      style="background-image: url('/images/4.png');
+    background-size: cover;position: center;
+      " 
+
+      >
+        
+      </div>
+      <div class="card centercontent"
+style="background-image: url('/images/5.png');
+    background-size: cover;position: center;
+      " 
+      >
+        
+      </div><div class="card centercontent"
+      style="background-image: url('/images/6.png');
+    background-size: cover;position: center;
+      " 
+      >
+        
+      </div><div class="card centercontent"
+      style="background-image: url('/images/7.png');
+    background-size: cover;position: center;
+      " 
+      >
+        
+      </div><div class="card centercontent"
+      style="background-image: url('/images/2.png');
+    background-size: cover;position: center;
+      " 
+      >
+        
+      </div>
+      <div style="display: flex;flex-direction: column;padding: 4px;">
+        <button style="margin:2px;padding: 5px 15px;">
+          Vote 
+        </button>
+        <button style="margin:2px;padding: 5px 15px;">
+          Guess
+        </button>
+      </div>
+    </div>
+     <div class="left centercontent" style="flex-direction: column;">
+      <div style="display: flex;flex-direction: row;padding: 4px;margin-left:34px; ">
+        <button style="margin:2px;padding: 5px 15px;">
+          Vote 
+        </button>
+        <button style="margin:2px;padding: 5px 15px;">
+          Guess
+        </button>
+      </div>
+      <div class="card centercontent"  >
+        card
+      </div>
+      <div class="card centercontent"
+
+       style="margin-top:-50%;border: 1px solid white;
+       background-image: url('/images/1.png');
+        ">
+        card
+      </div>
+        <div class="card centercontent" style="margin-top:-50%;border: 1px solid white; ">
+        card
+      </div>
+        <div class="card centercontent" style="margin-top:-50%;border: 1px solid white; ">
+        card
+      </div>
+        <div class="card centercontent" style="margin-top:-50%;border: 1px solid white; ">
+        card
+      </div>
+        <div class="card centercontent" style="margin-top:-50%;border: 1px solid white; ">
+        card
+      </div>
+    </div>
+     <div class="right centercontent" style="flex-direction: column;">
+      <div style="display: flex;flex-direction: row;padding: 4px;margin-right:34px; ">
+        <button style="margin:2px;padding: 5px 15px;">
+          Vote 
+        </button>
+        <button style="margin:2px;padding: 5px 15px;">
+          Guess
+        </button>
+      </div>
+      <div class="card centercontent"  >
+        card
+      </div>
+      <div class="card centercontent" style="margin-top:-50%;border: 1px solid white; ">
+        card
+      </div>
+        <div class="card centercontent" style="margin-top:-50%;border: 1px solid white; ">
+        card
+      </div>
+        <div class="card centercontent" style="margin-top:-50%;border: 1px solid white; ">
+        card
+      </div>
+        <div class="card centercontent" style="margin-top:-50%;border: 1px solid white; ">
+        card
+      </div>
+        <div class="card centercontent" style="margin-top:-50%;border: 1px solid white; ">
+        card
+      </div>
+      
+    </div>
+     <div class="bottom centercontent" >
+
+      <div>
+        <button style="padding: 10px 20px;background:green;color: white;border: none;
+          border-radius: 5px ;
+         " onclick="alert('story teler');">
+          Tell Story
+        </button>
+      </div>
+      <div style="display: flex;flex-direction: column;padding: 4px;">
+        <button style="margin:2px;padding: 5px 15px;">
+          Vote 
+        </button>
+        <button style="margin:2px;padding: 5px 15px;">
+          Guess
+        </button>
+      </div>
+      <div class="card centercontent">
+        card
+      </div>
+      <div class="card centercontent">
+        card
+      </div>
+      <div class="card centercontent">
+        card
+      </div><div class="card centercontent">
+        card
+      </div><div class="card centercontent">
+        card
+      </div><div class="card centercontent">
+        card
+      </div>
+    </div>
+
+    <div class="centercontainer centercontent">
+        <div class="card centercontent">
+        card
+      </div><div class="card centercontent">
+        card
+      </div><div class="card centercontent">
+        card
+      </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>`);
+   /// chatroom.append("<p class='message'> " + data.username + ": " + data.message + "</p>")
+  })
+
+  //Emit a username
+  send_username.click(function(){
+    socket.emit('change_username', {username : username.val()})
+  })
+
+  //Emit typing
+  message.bind("keypress", () => {
+    socket.emit('typing')
+  })
+
+  //Listen on typing
+  socket.on('typing', (data) => {
+    feedback.html("<p><i>" + data.username + " is typing a message..." + "</i></p>")
+  })
+
+  
+});
+
+
+
+    </script>
+  </body>
+</html>
