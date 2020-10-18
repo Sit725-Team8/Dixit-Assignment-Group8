@@ -8,6 +8,7 @@
     "express": "*",
     "jquery": "*",
     "mongodb": "^3.6.0",
+    "nodemon": "^2.0.5",
     "socket.io": "^2.3.0"
   },
   "scripts": {

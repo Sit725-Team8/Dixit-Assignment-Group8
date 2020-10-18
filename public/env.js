@@ -29,29 +29,17 @@ const newPlayer = () => {
             userName = result.name;
 
         }
-
-
     })
 }
-
-
-
 
 $(document).ready(() => {
     console.log('Ready')
     //create a new player
-    $('#profileButton').click(newPlayer);
-
-    
+    //$('#profileButton').click(newPlayer);   
 
     //test the are the user id and user name correct 
     $('#testButton').click(() => {
             console.log(userId);
             console.log(userName);
-        }
-
-    )
-
-
+        })
 })
-
