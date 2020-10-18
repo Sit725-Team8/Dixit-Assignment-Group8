@@ -1,3 +1,4 @@
 module.exports={
-    mongo:require('./MongoService')
+    mongo:require('./MongoService'),
+    socket:require('./socketServices')
 }
