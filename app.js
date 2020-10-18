@@ -13,7 +13,6 @@ app.use(bodyParser.json());
 
 app.use('/createProfile', routers.creatProfile.createProfileRoute)
 
-
 services.socket.openSocket(io)
 
 //setup database
