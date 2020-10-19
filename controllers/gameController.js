@@ -12,6 +12,15 @@ const createRoom = (roomId, callback) =>{
 const getNumberOfPlayers = (room, callback) =>{   
     callback(room.players.length);  
 }
+
+const roomIsFull = (room, callback) =>{   
+    if(room.players.length == 4){
+        callback(true, room.players.length);  
+    }
+    else {
+        callback(false, room.players.length);  
+    }    
+}
 const addPlayerToRoom = (room, playerName, socket, callback) =>{
     let newplayer = {
     room: room,     
@@ -27,5 +36,6 @@ const addPlayerToRoom = (room, playerName, socket, callback) =>{
 module.exports = {
     createRoom,
     addPlayerToRoom,
-    getNumberOfPlayers  
+    getNumberOfPlayers,
+    roomIsFull
 }
