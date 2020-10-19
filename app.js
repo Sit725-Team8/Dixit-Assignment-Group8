@@ -19,6 +19,9 @@ services.socket.openSocket(io)
 app.get('/result', (req,res)=>{
     services.mongo.getProfile(res) 
 })
+app.get('/game', (req,res)=>{
+    res.sendfile('./public/gameBoard/gameBoard.html') 
+})
 //setup database
 services.mongo.startDB()
 

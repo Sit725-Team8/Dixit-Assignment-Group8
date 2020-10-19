@@ -53,8 +53,10 @@ const socketIo = (io) => {
                         newRoom.players.push(newplayer);
                         rooms.push(newRoom);
                         socket.join(socket.room);
-                        socket.emit('join', socket.room);
-                        socket.to(socket.room).emit('addplayer', 'New player ' + player.playerName + ' joined'); // infrom others on the room 
+                        socket.emit('join', {msg: socket.room, count: 3});
+                        socket.to(socket.room).emit('addplayer', {msg: 'New player ' + player.playerName + ' joined', count: 3}); // inform others on the room   
+                        // socket.emit('join', {room: socket.room, count: 1});
+                        // socket.to(socket.room).emit('addplayer', 'New player ' + player.playerName + ' joined'); // infrom others on the room 
 
                     })
                 })
@@ -66,8 +68,15 @@ const socketIo = (io) => {
                             currentRoom.players.push(newplayer);
                             socket.room = currentRoom.roomId;
                             socket.join(socket.room);
-                            socket.emit('join', socket.room);
-                            socket.to(socket.room).emit('addplayer', 'New player ' + player.playerName + ' joined'); // inform others on the room                  
+                            socket.emit('join', {msg: socket.room, count: 3 - numOfPlayers});
+                            socket.to(socket.room).emit('addplayer', {msg: 'New player ' + player.playerName + ' joined', count: 3 - numOfPlayers}); // inform others on the room 
+                            gameController.roomIsFull(currentRoom, function(isFull, playersCount){
+                                console.log('#players = ' +playersCount)
+                                if(isFull) {
+                                    socket.emit('startGame', {msg: 'game will be started in seconds....', count: 4}); // inform others on the room
+                                    socket.to(socket.room).emit('startGame', {msg: 'game will be started in seconds....', count: 4}); // inform others on the room
+                                }
+                            })           
                         })
                     } else { // create a new room 
                         let roomId = 'room' + (numRooms + 1);
