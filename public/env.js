@@ -13,7 +13,7 @@
 
 
 //wrap it in a package and sends it to the server
-const newPlayer = () => {
+const newPlayer = async () => {
     let text = $('#inputName').val()
     console.log(text);
     let data = {
@@ -24,7 +24,7 @@ const newPlayer = () => {
     }
     console.log(data);
     //a POST request for insert the user data into the database 
-    $.ajax({
+    await $.ajax({
         url: '/createProfile',
         contentType: 'application/json',
         data: JSON.stringify(data),
@@ -44,7 +44,7 @@ const newPlayer = () => {
 
 
     })
-    
+    await assignCard();
 
 };
 const assignCard = () => {
@@ -71,17 +71,12 @@ const assignCard = () => {
 
 
 }
-const profileFunction = ()=>{
-    newPlayer()
-    setTimeout(() => {
-        assignCard()
-    }, 1500);
-}
+
 
 $(document).ready(() => {
     console.log('Ready')
     //create a new player
-    $('#profileButton').click(profileFunction);
+    $('#profileButton').click(newPlayer);
 
 
 
