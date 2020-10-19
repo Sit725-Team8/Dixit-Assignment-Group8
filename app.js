@@ -11,7 +11,8 @@ const routers = require('./routes');
 app.use(express.static(__dirname + "/public/"));
 app.use(bodyParser.json());
 
-app.use('/createProfile', routers.creatProfile.createProfileRoute)
+app.use('/createProfile', routers.creatProfile.router)
+app.use('/assignCards', routers.assignCard.router)
 
 services.socket.openSocket(io)
 

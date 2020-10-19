@@ -11,5 +11,5 @@ router.post('/',(req,res)=>{
 
 //export the file
 module.exports={
-    createProfileRoute:router
+    router
 }

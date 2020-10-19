@@ -1,8 +1,10 @@
 //get the name from input filed
 
+
+
 //two variables to identify the user 
-export let userId;
-export let userName;
+// export let userId;
+// export let userName;
 
 // sessionStorage.setItem('test','testSession');
 // let session = sessionStorage.getItem('test')
@@ -31,40 +33,67 @@ const newPlayer = () => {
             //give that two variables values
             //which you can use what ever in this user's front end
             console.log(result);
-            sessionStorage.setItem('userName',result.name);
-            sessionStorage.setItem('userId',result.Id);
+            sessionStorage.setItem('userName', result.name);
+            sessionStorage.setItem('userId', result.Id);
             // console.log('set session'+sessionStorage.getItem('userId'));
             // console.log('set session'+sessionStorage.getItem('userName'));
-            userId = result.Id;
-            userName = result.name;
-            console.log(userName);
-            console.log(userId);
+
+            console.log(sessionStorage.getItem('userName'));
+            console.log(sessionStorage.getItem('userId'));
         }
 
 
     })
+    
+
+};
+const assignCard = () => {
+    let id = sessionStorage.getItem('userId')
+    let name = sessionStorage.getItem('userName')
+    let data = {
+        userId: id,
+        userName: name
+    }
+    console.log(`data from assign cards ${data.userName}`);
+    $.ajax({
+        url: '/assignCards',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        type: 'POST',
+        success: (result) => {
+            //give that two variables values
+            //which you can use what ever in this user's front end
+            console.log(result);
+            sessionStorage.setItem('cards', result.cards);
+            console.log(sessionStorage.getItem('cards'));
+        }
+    })
+
+
 }
-
-
-
+const profileFunction = ()=>{
+    newPlayer()
+    setTimeout(() => {
+        assignCard()
+    }, 1500);
+}
 
 $(document).ready(() => {
     console.log('Ready')
     //create a new player
-    $('#profileButton').click(newPlayer);
+    $('#profileButton').click(profileFunction);
 
-    
+
 
     //test the are the user id and user name correct 
     $('#testButton').click(() => {
-            // console.log(sessionStorage.getItem('userName'));
-            // console.log(sessionStorage.getItem('userId'));
-            console.log(userId);
-            console.log(userName);
+            console.log(sessionStorage.getItem('userName'));
+            console.log(sessionStorage.getItem('userId'));
+            // console.log(userId);
+            // console.log(userName);
         }
 
     )
 
 
 })
-

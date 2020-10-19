@@ -17,7 +17,21 @@ const calButton = document.getElementById('calculatorBtn');
 
 socket.on('test-socket', data => {
     var node = document.createElement('Li')
-    var textNode = document.createTextNode(data.story);
+    var textNode = document.createTextNode(data.card1);
+    node.appendChild(textNode)
+    testOutput.appendChild(node)
+})
+
+socket.on('player', data => {
+    var node = document.createElement('Li')
+    var textNode = document.createTextNode(data);
+    node.appendChild(textNode)
+    testOutput.appendChild(node)
+    console.log(data);
+})
+socket.on('hello', data => {
+    var node = document.createElement('Li')
+    var textNode = document.createTextNode(data);
     node.appendChild(textNode)
     testOutput.appendChild(node)
 })
