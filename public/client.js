@@ -5,10 +5,15 @@ const testInput = document.getElementById('socketInput');
 const testOutput = document.getElementById('socketOutput');
 const calButton = document.getElementById('calculatorBtn');
 
-import {
-    userId,
-    userName
-} from './env.js'
+// import {
+//     userId,
+//     userName
+// } from './env.js'
+
+// let session = sessionStorage.getItem('test')
+// console.log(session+ '  is session from client.js');
+
+
 
 socket.on('test-socket', data => {
     var node = document.createElement('Li')
@@ -18,6 +23,9 @@ socket.on('test-socket', data => {
 })
 
 testButton.addEventListener('click', () => {
+    let userId = sessionStorage.getItem('userId')
+    let userName = sessionStorage.getItem('userName')
+
     let message = testInput.value;
     console.log(userId, userName);
     console.log(message);
@@ -31,11 +39,13 @@ testButton.addEventListener('click', () => {
 
 let i = 0;
 calButton.addEventListener('click', () => {
+    let userId = sessionStorage.getItem('userId')
+    let userName = sessionStorage.getItem('userName')
     //since the vote function have done use random value
     let random = Math.floor(Math.random() * 2);
     let voteResult = (random == 0) ? true : false;
     //for test propose
-    let payload={}
+    let payload = {}
     if (i == 0) {
         payload = {
             name: userName,

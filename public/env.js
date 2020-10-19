@@ -4,6 +4,12 @@
 export let userId;
 export let userName;
 
+// sessionStorage.setItem('test','testSession');
+// let session = sessionStorage.getItem('test')
+// console.log(session+ '  is session');
+// var string = 'this is a string';
+
+
 //wrap it in a package and sends it to the server
 const newPlayer = () => {
     let text = $('#inputName').val()
@@ -25,9 +31,14 @@ const newPlayer = () => {
             //give that two variables values
             //which you can use what ever in this user's front end
             console.log(result);
+            sessionStorage.setItem('userName',result.name);
+            sessionStorage.setItem('userId',result.Id);
+            // console.log('set session'+sessionStorage.getItem('userId'));
+            // console.log('set session'+sessionStorage.getItem('userName'));
             userId = result.Id;
             userName = result.name;
-
+            console.log(userName);
+            console.log(userId);
         }
 
 
@@ -46,6 +57,8 @@ $(document).ready(() => {
 
     //test the are the user id and user name correct 
     $('#testButton').click(() => {
+            // console.log(sessionStorage.getItem('userName'));
+            // console.log(sessionStorage.getItem('userId'));
             console.log(userId);
             console.log(userName);
         }
