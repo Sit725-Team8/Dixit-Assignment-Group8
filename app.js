@@ -8,7 +8,7 @@ const services = require('./services')
 const routers = require('./routes');
 
 
-app.use(express.static(__dirname + "/public/"));
+app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 
 app.use('/createProfile', routers.creatProfile.router)
@@ -19,9 +19,7 @@ services.socket.openSocket(io)
 app.get('/result', (req,res)=>{
     services.mongo.getProfile(res) 
 })
-app.get('/game', (req,res)=>{
-    res.sendFile(__dirname+'/public/gameBoard/index.html') 
-})
+
 //setup database
 services.mongo.startDB()
 

@@ -1,15 +1,3 @@
-//get the name from input filed
-
-
-
-//two variables to identify the user 
-// export let userId;
-// export let userName;
-
-// sessionStorage.setItem('test','testSession');
-// let session = sessionStorage.getItem('test')
-// console.log(session+ '  is session');
-// var string = 'this is a string';
 
 
 //wrap it in a package and sends it to the server
@@ -35,8 +23,7 @@ const newPlayer = async () => {
             console.log(result);
             sessionStorage.setItem('userName', result.name);
             sessionStorage.setItem('userId', result.Id);
-            // console.log('set session'+sessionStorage.getItem('userId'));
-            // console.log('set session'+sessionStorage.getItem('userName'));
+            
 
             console.log(sessionStorage.getItem('userName'));
             console.log(sessionStorage.getItem('userId'));
@@ -47,15 +34,15 @@ const newPlayer = async () => {
     await assignCard();
 
 };
-const assignCard = () => {
-    let id = sessionStorage.getItem('userId')
-    let name = sessionStorage.getItem('userName')
-    let data = {
+const assignCard = async() => {
+    let id = await sessionStorage.getItem('userId')
+    let name = await sessionStorage.getItem('userName')
+    let data = await {
         userId: id,
         userName: name
     }
     console.log(`data from assign cards ${data.userName}`);
-    $.ajax({
+    await $.ajax({
         url: '/assignCards',
         contentType: 'application/json',
         data: JSON.stringify(data),
@@ -68,7 +55,8 @@ const assignCard = () => {
             console.log(sessionStorage.getItem('cards'));
         }
     })
-
+   await window.location.replace('./gameBoard/index.html');
+  
 
 }
 
@@ -77,18 +65,6 @@ $(document).ready(() => {
     console.log('Ready')
     //create a new player
     $('#profileButton').click(newPlayer);
-
-
-
-    //test the are the user id and user name correct 
-    $('#testButton').click(() => {
-            console.log(sessionStorage.getItem('userName'));
-            console.log(sessionStorage.getItem('userId'));
-            // console.log(userId);
-            // console.log(userName);
-        }
-
-    )
 
     
 
