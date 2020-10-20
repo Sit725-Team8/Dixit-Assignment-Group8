@@ -20,7 +20,7 @@ app.get('/result', (req,res)=>{
     services.mongo.getProfile(res) 
 })
 app.get('/game', (req,res)=>{
-    res.sendfile('./public/gameBoard/gameBoard.html') 
+    res.sendFile(__dirname+'/public/gameBoard/index.html') 
 })
 //setup database
 services.mongo.startDB()
