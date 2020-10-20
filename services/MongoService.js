@@ -28,14 +28,14 @@ const insertProfile = (objectToInsert, res) => {
     if (err) {
       console.log(err);
     } else {
-      userIdArray.push(objectToInsert._id)
-      console.log('after push');
-      console.log(userIdArray);
-      res.json({
-        message: 'inserted',
+      let payload = {
         Id:objectToInsert._id,
         name:objectToInsert.name
-      })
+      }
+      console.log(payload);
+      userIdArray.push(payload)
+      console.log(userIdArray);
+      res.json(payload)
     }
   })
 }

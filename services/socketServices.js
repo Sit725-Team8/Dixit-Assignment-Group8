@@ -1,15 +1,18 @@
+const { data } = require('jquery');
 const cal = require('./calculatorService')
 const userArray = require('./MongoService').userIdArray
-const gameController = require('../controllers/gameController');
+
 
 let resultArray = []
-var rooms = []
+
 //started the socket io
 const socketIo = (io) => {
     //while a user connected 
+    let clientNo = 0;
     io.on('connection', (socket) => {
+        
         console.log('a user connected');
-        console.log(userArray.length);
+               
         //while user disconnected 
         socket.on('disconnect', () => {
             console.log('user disconnected');
@@ -30,70 +33,36 @@ const socketIo = (io) => {
                 console.log(array);
             }
         })
-
-        io.emit('hello', 'hello')
-
-        socket.on('join', function (player) {
-            roomNames = Object.keys(socket.rooms);
-            console.log('Rooms: ' + roomNames)
-
-
-            socket.username = player.playerName;
-            numRooms = rooms.length;
-            if (numRooms == 0) {
-                let roomId = 0;
-                if (Object.keys(socket.rooms).length > 0) { // check the default room
-                    roomId = Object.keys(socket.rooms)[0];
-                } else
-                    roomId = 'room' + (numRooms + 1);
-
-                gameController.createRoom(roomId, function (newRoom) { // create a room object.
-                    socket.room = roomId;
-                    gameController.addPlayerToRoom(newRoom.roomId, player.playerName, socket, function (newplayer) {
-                        newRoom.players.push(newplayer);
-                        rooms.push(newRoom);
-                        socket.join(socket.room);
-                        socket.emit('join', {msg: socket.room, count: 3});
-                        socket.to(socket.room).emit('addplayer', {msg: 'New player ' + player.playerName + ' joined', count: 3}); // inform others on the room   
-                        // socket.emit('join', {room: socket.room, count: 1});
-                        // socket.to(socket.room).emit('addplayer', 'New player ' + player.playerName + ' joined'); // infrom others on the room 
-
-                    })
-                })
-            } else { // try to add player to the last created room
-                let currentRoom = rooms[rooms.length - 1];
-                gameController.getNumberOfPlayers(currentRoom, function (numOfPlayers) {
-                    if (numOfPlayers < 4) {
-                        gameController.addPlayerToRoom(currentRoom.roomId, player.playerName, socket, function (newplayer) {
-                            currentRoom.players.push(newplayer);
-                            socket.room = currentRoom.roomId;
-                            socket.join(socket.room);
-                            socket.emit('join', {msg: socket.room, count: 3 - numOfPlayers});
-                            socket.to(socket.room).emit('addplayer', {msg: 'New player ' + player.playerName + ' joined', count: 3 - numOfPlayers}); // inform others on the room 
-                            gameController.roomIsFull(currentRoom, function(isFull, playersCount){
-                                console.log('#players = ' +playersCount)
-                                if(isFull) {
-                                    socket.emit('startGame', {msg: 'game will be started in seconds....', count: 4}); // inform others on the room
-                                    socket.to(socket.room).emit('startGame', {msg: 'game will be started in seconds....', count: 4}); // inform others on the room
-                                }
-                            })           
-                        })
-                    } else { // create a new room 
-                        let roomId = 'room' + (numRooms + 1);
-                        gameController.createRoom(roomId, function (newRoom) {
-                            socket.room = roomId;
-                            gameController.addPlayerToRoom(newRoom.roomId, player.playerName, socket, function (newplayer) {
-                                newRoom.players.push(newplayer);
-                                rooms.push(newRoom);
-                                socket.join(socket.room);
-                                socket.emit('join', socket.room);
-                                socket.to(socket.room).emit('addplayer', 'New player ' + player.playerName + ' joined'); // inform others on the room 
-                            })
-                        })
-                    }
-                });
+        //listen to joint the room
+        socket.on('joinRoom', data =>{
+            //get the number of user connected
+            clientNo++;
+            console.log(`Client No.${clientNo} is assign to a room`);
+            //automate assign room to each user
+            let room = 'room'+Math.ceil(clientNo/4);
+            console.log(room);
+            //join room
+            socket.join(room)
+            //incase of use the room name in the server side
+            //add the room into the array which store every user information in server side 
+            userArray.forEach(element => {
+            
+                if (element.Id = data.userId){
+                    element.room = room
+                    console.log(`room: ${element.room} added to user ${data.userName}`);
+                }
+                
+            });
+            //for the front end to sort the room name inside session
+            io.to(room).emit('roomNumber', {room:room,playNo:clientNo})
+            //if the room is full then start the game for that room
+            if(clientNo%4 === 0){
+                //emit an event which star the game
+                io.to(room).emit('startGame')
             }
-        });
+        })
+
+        
 
 
     })
