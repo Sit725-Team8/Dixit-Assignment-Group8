@@ -10,8 +10,8 @@ $( document ).ready(function() {
     console.log( "user name:    ",sessionStorage.getItem('userName'));
     console.log("user id:    ", sessionStorage.getItem('userId'));
     payload = {
-        'senderId': userId,
-        'senderName': userName
+        userId: userId,
+        userName: userName
     }
 
     socket.emit('joinRoom', payload)
