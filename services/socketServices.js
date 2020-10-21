@@ -59,7 +59,28 @@ const socketIo = (io) => {
             //if the room is full then start the game for that room
             if(clientNo%4 === 0){
                 //emit an event which star the game
-                io.to(room).emit('startGame')
+                
+                //get the current room
+                let currentRoom = userArray[userArray.length - 1].room
+                //an array to sort all player in this room
+                let currentPlayer = []
+                //insert players
+                userArray.forEach(element => {
+                    if(element.room == currentRoom)
+                    {
+                        currentPlayer.push(element)
+                    }
+                    else{
+                        console.log(false);
+                    }
+                });
+                //make the first player in the array to be the storyteller
+                currentPlayer[0].storytellerNo++;
+                console.log(currentPlayer[0].storytellerNo);
+                console.log(currentPlayer);
+                //start game with the current players array so the client side can decide who's become story teller
+                //all client should received the full array because in every interface should point out who is the storyteller
+                io.to(room).emit('startGame',currentPlayer)
             }
         })
 
