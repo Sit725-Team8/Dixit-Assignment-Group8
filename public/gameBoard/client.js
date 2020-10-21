@@ -37,14 +37,64 @@ socket.on('roomNumber', data => { //
 })
 // //once received the start game event from server
 socket.on('startGame', data=>{
+    alert("found players")
+    $("#p1c1").src( "assets/DixitCards/", cards[0], ".PNG") //fix src address
+    $("#p1c2").src("assets/DixitCards/", cards[1], ".PNG")
+    $("#p1c3").src("assets/DixitCards/", cards[2], ".PNG")
+
+
     /*ready to play
     //set cards
     //set storyteller
-    if(storyteller == true){
-        get theme and card
-        socket.emit("storytellerChoice", {theme, card})
-    }
 
      */
+    if(storyteller == true){ //need variable
+        let theme = prompt("enter a theme that suits one of your cards and then select the card")
+        $('#theme').text(theme) //need theme id in html
+        //$('#playerCard').click() save card
+        //$('#selectBtn').click() -> socket.emit("storyTheme", {theme, card})
+    }
 
- })
+
+
+})
+
+
+//when receiving info from storyteller
+let selectedCards = []
+cards.push({storyteller, storytellerCard})
+socket.on("storyTheme", data => {
+    //*add html element to show theme to UI
+    $("#theme").text(data.theme)
+    storytellerCard= data.card
+    alert("select a card that matches the theme")
+    //$(#playercard).onclick() -> save card
+    //$(#selectBtn).onclick() -> selectedCards.push({player, card})  ->socket.emit("similarCard", {card, player})
+})
+
+
+let guesses = []
+
+socket.on("similarCard", data => {//carefull of data order
+    cards.push(data)
+    if (cards.length == 4 && storyteller == false){
+        alert("guess which card is the storytellers")
+        //$(#choosencard).onclick() -> save card
+        //$(#guessBtn).onclick() -> guesses.push({player, card}) -> socket.emit("guessCard", {card, player})
+
+    }
+})
+
+socket.on("guessCard", data => { //careful of data order
+    guesses.push(data)
+    if(guesses.length == 3){
+        //start voting
+        //meshals .....
+    }
+
+})
+
+
+
+
+
