@@ -3,21 +3,23 @@ const socket = io.connect('http://localhost:3030')
 let userId = sessionStorage.getItem('userId')
 let userName = sessionStorage.getItem('userName')
 
-let payload = {
-    'senderId': userId,
-    'senderName': userName
-}
+let payload
 
-//setTimeout(() => {
+
 $( document ).ready(function() {
     console.log( "user name:    ",sessionStorage.getItem('userName'));
     console.log("user id:    ", sessionStorage.getItem('userId'));
+    payload = {
+        'senderId': userId,
+        'senderName': userName
+    }
+
     socket.emit('joinRoom', payload)
 
 
-
-
 });
+
+
 
 
 //sort the room in the session in case of use that in future

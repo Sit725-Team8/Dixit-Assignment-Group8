@@ -47,7 +47,7 @@ const socketIo = (io) => {
             //add the room into the array which store every user information in server side 
             userArray.forEach(element => {
             
-                if (element.Id = data.userId){
+                if (element.Id === data.userId){
                     element.room = room
                     console.log(`room: ${element.room} added to user ${data.userName}`);
                 }

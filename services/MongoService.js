@@ -34,6 +34,7 @@ const insertProfile = (objectToInsert, res) => {
       }
       console.log(payload);
       userIdArray.push(payload)
+      console.log('the users array is ');
       console.log(userIdArray);
       res.json(payload)
     }
