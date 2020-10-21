@@ -21,7 +21,6 @@ $( document ).ready(function() {
 
 //needs to be replaced
 function message(msg) {
-
     alert(msg)
 
 }
@@ -42,7 +41,9 @@ socket.on('roomNumber', data => { //
 })
 // //once received the start game event from server
 socket.on('startGame', data=>{
-    message()
+    message("found players, please close all alerts")
+    
+
     /*ready to play
     //set cards
     //set storyteller
