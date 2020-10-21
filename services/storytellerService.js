@@ -1,30 +1,22 @@
-//an array for testing propose 
-let testArray = [{
-        Id: '5f8fe8370b638120c4cf3a60',
-        name: '11',
-        storytellerNo: 2,
-        room: 'room1'
-    },
-    {
-        Id: '5f8fe83f0b638120c4cf3a61',
-        name: '22',
-        storytellerNo: 1,
-        room: 'room1'
-    },
-    {
-        Id: '5f8fe8460b638120c4cf3a62',
-        name: '33',
-        storytellerNo: 1,
-        room: 'room1'
-    },
-    {
-        Id: '5f8fe84e0b638120c4cf3a63',
-        name: '44',
-        storytellerNo: 1,
-        room: 'room1'
-    }
-]
 
+
+
+// // let testData = [ { Id: '5f9018691dda013568df2a09',
+// //     name: '5',
+// //     storytellerNo: 1,
+// //     room: 'room2' },
+// //   { Id: '5f9018741dda013568df2a0a',
+// //     name: '6',
+// //     storytellerNo: 0,
+// //     room: 'room2' },
+// //   { Id: '5f90187d1dda013568df2a0b',
+// //     name: '7',
+// //     storytellerNo: 0,
+// //     room: 'room2' },
+// //   { Id: '5f9018871dda013568df2a0c',
+// //     name: '8',
+// //     storytellerNo: 0,
+// //     room: 'room2' } ]
 const passStoryteller = (currentPlayersArray) => {
     //record how many players has been twice storyteller
     let count = 0;
@@ -40,15 +32,22 @@ const passStoryteller = (currentPlayersArray) => {
         console.log('The game should finish');
     }else{
         //pass the storyteller to next player 
-        for (let index = 0; index < currentPlayersArray.length; index++) {
+        for (let index = 0; index < currentPlayersArray.length - 1; index++) {
             if(currentPlayersArray[index].storytellerNo - currentPlayersArray[index+1].storytellerNo == 1){
-                currentPlayersArray[index+1].storytellerNo++;
+                let storyteller = currentPlayersArray[index+1]
+                storyteller.storytellerNo++;
                 console.log('pass the storyteller to next player');
+                console.log(storyteller);
+
+
                 break;
             }
             
         }
     }
+    console.log('the current players array after pass the storyteller');
     console.log(currentPlayersArray);
+
 }
-passStoryteller(testArray)
+
+// passStoryteller(testData)

@@ -30,8 +30,7 @@ const insertProfile = (objectToInsert, res) => {
     } else {
       let payload = {
         Id:objectToInsert._id,
-        name:objectToInsert.name,
-        storytellerNo:0
+        name:objectToInsert.name
       }
       console.log(payload);
       userIdArray.push(payload)
