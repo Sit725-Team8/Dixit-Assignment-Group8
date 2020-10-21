@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:Ray" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac533763-085e-4743-be85-b24b10aa7821" name="Default Changelist" comment="">
+    <list default="true" id="ac533763-085e-4743-be85-b24b10aa7821" name="Default Changelist" comment="matchmake working on gameboard and got rid of redundancies">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/gameBoard/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/gameBoard/client.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/gameBoard/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/gameBoard/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,29 +70,56 @@
       <option name="presentableId" value="Default" />
       <updated>1603014811013</updated>
       <workItem from="1603014812264" duration="338000" />
-      <workItem from="1603252740552" duration="2216000" />
+      <workItem from="1603252740552" duration="3446000" />
     </task>
+    <task id="LOCAL-00001" summary="matchmake working on gameboard and got rid of redundancies">
+      <created>1603255118950</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1603255118950</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="matchmake working on gameboard and got rid of redundancies" />
+    <option name="LAST_COMMIT_MESSAGE" value="matchmake working on gameboard and got rid of redundancies" />
+  </component>
   <component name="WindowStateProjectService">
-    <state width="617" height="162" key="GridCell.Tab.0.bottom" timestamp="1603254965342">
+    <state width="617" height="162" key="GridCell.Tab.0.bottom" timestamp="1603256201244">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="617" height="162" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1603254965342" />
-    <state width="617" height="162" key="GridCell.Tab.0.center" timestamp="1603254965342">
+    <state width="617" height="162" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1603256201244" />
+    <state width="617" height="162" key="GridCell.Tab.0.center" timestamp="1603256201244">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="617" height="162" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1603254965342" />
-    <state width="617" height="162" key="GridCell.Tab.0.left" timestamp="1603254965342">
+    <state width="617" height="162" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1603256201244" />
+    <state width="617" height="162" key="GridCell.Tab.0.left" timestamp="1603256201244">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="617" height="162" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1603254965342" />
-    <state width="617" height="162" key="GridCell.Tab.0.right" timestamp="1603254965342">
+    <state width="617" height="162" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1603256201244" />
+    <state width="617" height="162" key="GridCell.Tab.0.right" timestamp="1603256201244">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="617" height="162" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1603254965342" />
+    <state width="617" height="162" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1603256201244" />
+    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603255154042">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1603255154042" />
   </component>
 </project>

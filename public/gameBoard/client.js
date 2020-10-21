@@ -19,6 +19,12 @@ $( document ).ready(function() {
 
 });
 
+//needs to be replaced
+function message(msg) {
+
+    alert(msg)
+
+}
 
 //sort the room in the session in case of use that in future
 socket.on('roomNumber', data => { //
@@ -30,11 +36,13 @@ socket.on('roomNumber', data => { //
     let numberOfPlayerInRoom = playerNo%4
     let waitNumberOfPlayer = 4- numberOfPlayerInRoom
     //display in console
-    console.log(`you are the No.${numberOfPlayerInRoom} in the room, will wait for ${waitNumberOfPlayer} to start the game `);
+    let waitMessage = (`you are the No. ${numberOfPlayerInRoom} in the room, will wait for ${waitNumberOfPlayer} to start the game `);
+    message(waitMessage)
     
 })
 // //once received the start game event from server
 socket.on('startGame', data=>{
+    message()
     /*ready to play
     //set cards
     //set storyteller
