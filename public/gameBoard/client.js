@@ -21,7 +21,9 @@ $( document ).ready(function() {
 
 //needs to be replaced
 function message(msg) {
+    //if not player 4
     alert(msg)
+    //else nothing
 
 }
 
@@ -42,7 +44,10 @@ socket.on('roomNumber', data => { //
 // //once received the start game event from server
 socket.on('startGame', data=>{
     message("found players, please close all alerts")
-    
+    $("#p1c1").src( "assets/DixitCards/", cards[0], ".PNG")
+    $("#p1c2").src("assets/DixitCards/", cards[1], ".PNG")
+    $("#p1c3").src("assets/DixitCards/", cards[2], ".PNG")
+    "assets/DixitCards/", cards[0], ".PNG"
 
     /*ready to play
     //set cards
