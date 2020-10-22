@@ -1,6 +1,7 @@
 /**
  * 
  * @param {[storyTeller:boolean,
+ *          score: index,
  *          name:username(string)
  *          Id:userId(string)],
  *          voteCard:card bring in this round(index),
@@ -28,17 +29,16 @@ const calculate = array => {
     //everyone score for this round is 2 except for the storyteller
     if (i == array.length - 1) {
         array.forEach(element => {
-            if (element.storyTeller) element.score = 0;
-            else element.score = 2
+            if (!element.storyTeller) element.score += 2;
+            
         });
     }
     //not everyone got right vote
     //the ppl vote right and storyteller score 3 in this round
     else {
         array.forEach(element => {
-            if (element.storyTeller) element.score = 3;
-            else if (element.voteCard == storytellerCard) element.score = 3;
-            else element.score = 0;
+            if (element.storyTeller) element.score += 3;
+            else if (element.voteCard == storytellerCard) element.score += 3;
         });
         //because some user voted wrong
         //call bonus score function 
@@ -50,8 +50,9 @@ const calculate = array => {
 /**
  * 
  * @param {[storyTeller:boolean,
- *          name:username(string)
- *          Id:userId(string)],
+ *          name:username(string),
+ *          score: index,
+ *          Id:userId(string),
  *          voteCard:card bring in this round(index),
  *          holdCard:card that belong to this user(index),
  *          score:index
@@ -73,24 +74,28 @@ const bonusScore = array => {
 
 let mockData = [{
         storyTeller: true,
+        score:0,
         name: '1',
         Id: '1',
         voteCard:null,
         holdCard:1
     },{
         storyTeller: false,
+        score:0,
         name: '2',
         Id: '2',
         voteCard: 4,
         holdCard:2
     },{
         storyTeller: false,
+        score:0,
         name: '3',
         Id: '3',
         voteCard: 4,
         holdCard:3
     },{
         storyTeller: false,
+        score:0,
         name: '4',
         Id: '4',
         voteCard: 1,
