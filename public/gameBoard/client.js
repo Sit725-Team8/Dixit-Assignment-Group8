@@ -4,6 +4,7 @@ let userId = sessionStorage.getItem('userId')
 let userName = sessionStorage.getItem('userName')
 let rawcards = sessionStorage.getItem('cards')
 let cards = rawcards.split(",").map(Number);
+let score = sessionStorage.getItem('score')
 
 let payload = {
     userId: userId,
@@ -37,6 +38,7 @@ function mapCard(cardsIndex){
 $(document).ready(function () {
     console.log("user name:    ", sessionStorage.getItem('userName'));
     console.log("user id:    ", sessionStorage.getItem('userId'));
+    console.log("score is :    ", sessionStorage.getItem('score'));
     console.log('user cards are');
     console.log(cards);
     console.log(cards[0]);
@@ -82,23 +84,15 @@ socket.on('roomNumber', data => { //
     console.log(`you are the No.${numberOfPlayerInRoom} in the room, will wait for ${waitNumberOfPlayer} to start the game `);
 
 })
+
+/**
+ *  data = { [Id:id,
+ *            name:username,
+ *            storytellerNo:integer]}
+ */
 // //once received the start game event from server
 socket.on('startGame', data=>{
     alert("found players")
-
-
-
-    /*ready to play
-    //set cards
-    //set storyteller
-
-     */
-    // if(storyteller == true){ //need variable
-    //     let theme = prompt("enter a theme that suits one of your cards and then select the card")
-    //     $('#theme').text(theme) //need theme id in html
-    //     //$('#playerCard').click() save card
-    //     //$('#selectBtn').click() -> socket.emit("storyTheme", {theme, card})
-    // }
 
      //the information about storyteller
      storyteller = findStoryteller(data)
@@ -162,6 +156,11 @@ const vote = ()=>{
 
 }
 
+//the button for send cards that storyteller. 
+const storytellerChoiceCard = ()=>{
+    let storyCard  //should be a index that
+    
+}
 
 
 

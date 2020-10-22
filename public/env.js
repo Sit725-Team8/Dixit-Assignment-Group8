@@ -23,10 +23,12 @@ const newPlayer = async () => {
             console.log(result);
             sessionStorage.setItem('userName', result.name);
             sessionStorage.setItem('userId', result.Id);
+            sessionStorage.setItem('score', 0)
             
 
             console.log(sessionStorage.getItem('userName'));
             console.log(sessionStorage.getItem('userId'));
+            console.log(sessionStorage.getItem('score'));
         }
 
 
