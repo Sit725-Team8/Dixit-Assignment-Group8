@@ -123,9 +123,11 @@ socket.on('startGame', data=>{
 
 
 //when receiving info from storyteller
-let selectedCards = []
+//let selectedCards = []
 
-cards.push({storyteller, storytellerCard})
+//emit story to server first, the server record the story and then will emit back to socket 'storyTheme'(should be a io.to.emit)
+//because all players has to see the story.
+
 socket.on("storyTheme", data => {
     //*add html element to show theme to UI
     $("#theme").text(data.theme)
@@ -134,28 +136,33 @@ socket.on("storyTheme", data => {
     //$(#playercard).onclick() -> save card
     //$(#selectBtn).onclick() -> selectedCards.push({player, card})  ->socket.emit("similarCard", {card, player})
 })
+//when a player select 
 
 
-let guesses = []
+//if we listen the socket from server side
+//the guess array should generate on server side 
+//the data would be the array send from server side
 
-socket.on("similarCard", data => {//carefull of data order
-    cards.push(data)
-    if (cards.length == 4 && storyteller == false){
-        alert("guess which card is the storytellers")
-        //$(#choosencard).onclick() -> save card
-        //$(#guessBtn).onclick() -> guesses.push({player, card}) -> socket.emit("guessCard", {card, player})
+//then the logic should also write in the server side 
+//such as 
+//when player pick a card, emit to server side
+//the sever side say if length == 4 then emit that array to 'similarCard' socket
 
-    }
-})
-
-socket.on("guessCard", data => { //careful of data order
-    guesses.push(data)
-    if(guesses.length == 3){
-        //start voting
-        //meshals .....
-    }
+socket.on("similarCard", data => {//careful of data order
+    //the data should be the guess array and just notice users
+    //such as alter etc...
 
 })
+
+
+//vote should also be a function 
+//maybe this function should in the socket similarCard, because the data is the full array of cards bring out
+//inside the function, it has to emit to server with the card selected(maybe with your cards in case of calculate the score)
+const vote = ()=>{
+
+}
+
+
 
 
 
