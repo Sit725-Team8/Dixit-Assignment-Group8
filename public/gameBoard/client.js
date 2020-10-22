@@ -11,6 +11,8 @@ let payload = {
     userName: userName
 }
 let storyteller;
+//usd to next round
+let beginGameInfo = []
 
 //in case of send the user array back to server for next storyteller
 //sort it here
@@ -73,6 +75,7 @@ $(document).ready(function () {
 
 //sort the room in the session in case of use that in future
 socket.on('roomNumber', data => { //
+    
     //set teh session 
     sessionStorage.setItem('room', data.room)
     let playerNo = data.playNo
@@ -92,6 +95,8 @@ socket.on('roomNumber', data => { //
  */
 // //once received the start game event from server
 socket.on('startGame', data=>{
+    //when this round finished, this will be send back to server to decide next storyteller
+    beginGameInfo = data
     alert("found players")
 
      //the information about storyteller

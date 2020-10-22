@@ -72,39 +72,39 @@ const bonusScore = array => {
     });
 }
 
-let mockData = [{
-        storyTeller: true,
-        score:0,
-        name: '1',
-        Id: '1',
-        voteCard:null,
-        holdCard:1
-    },{
-        storyTeller: false,
-        score:0,
-        name: '2',
-        Id: '2',
-        voteCard: 4,
-        holdCard:2
-    },{
-        storyTeller: false,
-        score:0,
-        name: '3',
-        Id: '3',
-        voteCard: 4,
-        holdCard:3
-    },{
-        storyTeller: false,
-        score:0,
-        name: '4',
-        Id: '4',
-        voteCard: 1,
-        holdCard:4
-    },
+// let mockData = [{
+//         storyTeller: true,
+//         score:0,
+//         name: '1',
+//         Id: '1',
+//         voteCard:null,
+//         holdCard:1
+//     },{
+//         storyTeller: false,
+//         score:0,
+//         name: '2',
+//         Id: '2',
+//         voteCard: 4,
+//         holdCard:2
+//     },{
+//         storyTeller: false,
+//         score:0,
+//         name: '3',
+//         Id: '3',
+//         voteCard: 4,
+//         holdCard:3
+//     },{
+//         storyTeller: false,
+//         score:0,
+//         name: '4',
+//         Id: '4',
+//         voteCard: 1,
+//         holdCard:4
+//     },
 
-]
+// ]
 
-console.log(calculate(mockData));
+// console.log(calculate(mockData));
 
 
 

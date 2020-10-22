@@ -1,9 +1,13 @@
-
+const {
+    calculate
+} = require('./calculatorService')
 const cal = require('./calculatorService')
 const userArray = require('./MongoService').userIdArray
+const calFunction = require('./calculatorService').calculate
 
-
-let resultArray = []
+//an array store every player's respond from client side 
+//so we can have mutiple game process at the same time
+let inGameArray = []
 
 
 
@@ -19,21 +23,69 @@ const socketIo = (io) => {
         socket.on('disconnect', () => {
             console.log('user disconnected');
         })
-        //get the data from a user and then broadcast to all users 
-        socket.on('test-socket', testData => {
-            testData.card1 = 1
-            console.log(testData);
-            io.emit('test-socket', testData)
+
+        /**
+         * 
+         * @param {[storyTeller:boolean,
+         *          score: index,
+         *          name:username(string)
+         *          Id:userId(string)],
+         *          room:room name(string),
+         *          holdCard:card that belong to this user(index),
+         *          message: theme(string)
+         *          } data 
+         */
+        //get the message and card, user information from storyteller  
+        socket.on('storyTheme', data => {
+
+
+            inGameArray.push(data)
+            let room = data.room
+            //do not really need emit the whole data
+            //the propose to have the whole data send by client is because will used for calculate result 
+            //should change the socket name 
+            io.to(room).emit('some socket', data.message)
         })
-        socket.on('send-result', data => {
-            console.log(data);
-            resultArray.push(data)
-            //for test propose 
-            if (resultArray.length == 4) {
-                let array = cal.calculate(resultArray)
-                console.log('test cal result');
-                console.log(array);
+        /**
+         * 
+         * @param {[storyTeller:boolean,
+         *          score: index,
+         *          name:username(string)
+         *          Id:userId(string)],
+         *          voteCard:card bring in this round(index),
+         *          holdCard:card that belong to this user(index),
+         *          room: room name
+         *          } data 
+         */
+        socket.on('vote', data => {
+            inGameArray.push(data)
+            //foreach loop to get a room player
+            let room = data.room;
+            let i = 0
+            inGameArray.forEach(element => {
+                if (element.room == room) {
+                    i++
+                }
+            });
+            //all player has voted 
+            //its 4 because the storyteller data has push in to array in socket storyTheme
+            //if you want to make the storyteller vote as well you should add logic that if this user is added
+            //the best way is dot make the storyteller vote
+            if (i == 4) {
+                let playersForARoom = []
+                //push every player in that room to a array them send back to client side 
+                //as this point all the players action finished so no worry about players to cheat
+                inGameArray.forEach(element => {
+                    if (element.room == room) {
+                        playersForARoom.push(element)
+                    }
+                });
+                //then the result will calculated 
+                let result = calFunction(playersForARoom)
+                //send the result back to the client side 
+                io.to(room).emit('some socket', result)
             }
+
         })
         //listen to joint the room
         socket.on('joinRoom', data => {
@@ -67,7 +119,7 @@ const socketIo = (io) => {
                 let currentPlayer = []
                 //incase of dot change the value in user array
                 let newArray = JSON.parse(JSON.stringify(userArray))
-                
+
                 //get the current room
                 let currentRoom = newArray[newArray.length - 1].room
                 //an array to sort all player in this room
@@ -75,18 +127,16 @@ const socketIo = (io) => {
                 //insert players
                 newArray.forEach(element => {
                     if (element.room == currentRoom) {
-                        element.storytellerNo=0
+                        element.storytellerNo = 0
                         currentPlayer.push(element)
-                        
-                    } 
+
+                    }
                 });
                 //make the first player in the array to be the storyteller
                 currentPlayer[0].storytellerNo++;
-                console.log('the current players are');
-                console.log(currentPlayer[0].storytellerNo);
                 console.log('the current player array is ');
                 console.log(currentPlayer);
-                
+
                 //start game with the current players array so the client side can decide who's become story teller
                 //all client should received the full array because in every interface should point out who is the storyteller
                 //the propose is send whole array is because we may have many rooms in game at same time

@@ -47,6 +47,7 @@ const passStoryteller = (currentPlayersArray) => {
     }
     console.log('the current players array after pass the storyteller');
     console.log(currentPlayersArray);
+    return currentPlayersArray
 
 }
 
