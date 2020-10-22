@@ -26,151 +26,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f29685e-1316-4ef1-939a-045ca7c3a97b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/1.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/10.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/11.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/12.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/13.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/14.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/15.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/16.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/17.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/18.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/19.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/2.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/20.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/21.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/22.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/23.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/24.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/25.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/26.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/27.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/28.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/29.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/3.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/30.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/31.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/32.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/33.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/34.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/35.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/36.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/4.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/5.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/6.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/7.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/8.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/9.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/gameBoard/dixitCards/BOC.PNG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/10.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/11.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/12.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/13.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/14.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/15.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/16.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/17.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/18.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/19.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/2.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/20.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/21.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/22.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/23.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/24.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/25.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/26.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/27.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/28.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/29.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/3.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/30.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/31.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/32.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/33.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/34.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/35.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/36.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/4.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/5.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/6.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/7.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/8.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/9.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/Dixit Cards/BOC.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/createProfilePageBackground.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/createProfilePageBackground.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/css/all.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/all.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/css/bgsvg.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/bgsvg.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/css/mastercss.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/mastercss.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/css/style1.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/GameCard/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/GameCard/1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/GameCard/10.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/GameCard/10.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/GameCard/11.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/GameCard/11.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/GameCard/12.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/GameCard/12.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/GameCard/13.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/GameCard/13.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/GameCard/14.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/GameCard/14.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/GameCard/15.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/GameCard/15.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/GameCard/16.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/GameCard/16.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/GameCard/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/GameCard/2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/GameCard/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/GameCard/3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/GameCard/4.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/GameCard/4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/GameCard/5.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/GameCard/5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/GameCard/6.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/GameCard/6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/GameCard/7.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/GameCard/7.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/GameCard/8.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/GameCard/8.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/GameCard/9.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/GameCard/9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/LoginBack.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/LoginBack.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/UserPhoto/user (1).png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/UserPhoto/user (1).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/UserPhoto/user (2).png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/UserPhoto/user (2).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/UserPhoto/user (3).png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/UserPhoto/user (3).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/dixit_background.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/dixit_background.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/dixitlogo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/dixitlogo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/faviconicon.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/faviconicon.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/gameHeader.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/gameHeader.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/logo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/logo.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/selectcards/card_01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/selectcards/card_01.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/selectcards/card_02.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/selectcards/card_02.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/selectcards/card_03.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/selectcards/card_03.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/images/selectcards/card_04.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/selectcards/card_04.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/webfonts/Flaticon.eot" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/webfonts/Flaticon.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/webfonts/Flaticon.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/webfonts/Flaticon.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/webfonts/Flaticon.woff" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/webfonts/Flaticon.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/webfonts/FontAwesome.otf" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/webfonts/FontAwesome.otf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/webfonts/fa-brands-400.eot" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/webfonts/fa-brands-400.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/webfonts/fa-regular-400.eot" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/webfonts/fa-regular-400.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/webfonts/fa-regular-400.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/webfonts/fa-regular-400.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/webfonts/fa-regular-400.woff" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/webfonts/fa-regular-400.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/webfonts/fa-regular-400.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/webfonts/fa-regular-400.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/webfonts/fa-solid-900.eot" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/webfonts/fa-solid-900.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/webfonts/fa-solid-900.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/webfonts/fa-solid-900.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/webfonts/fa-solid-900.woff" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/webfonts/fa-solid-900.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/webfonts/fa-solid-900.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/webfonts/fa-solid-900.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/webfonts/fontawesome-webfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/webfonts/fontawesome-webfont.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/webfonts/fontawesome-webfont.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/webfonts/fontawesome-webfont.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/webfonts/fontawesome-webfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/webfonts/fontawesome-webfont.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/webfonts/fontawesome-webfont.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/webfonts/fontawesome-webfont.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/gameBoard/asset/images/GameCard/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/gameBoard/asset/images/GameCard/10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/gameBoard/asset/images/GameCard/11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/gameBoard/asset/images/GameCard/12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/gameBoard/asset/images/GameCard/13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/gameBoard/asset/images/GameCard/14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/gameBoard/asset/images/GameCard/15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/gameBoard/asset/images/GameCard/16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/gameBoard/asset/images/GameCard/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/gameBoard/asset/images/GameCard/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/gameBoard/asset/images/GameCard/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/gameBoard/asset/images/GameCard/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/gameBoard/asset/images/GameCard/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/gameBoard/asset/images/GameCard/7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/gameBoard/asset/images/GameCard/8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/gameBoard/asset/images/GameCard/9.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/gameBoard/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/gameBoard/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,6 +48,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bryce\Desktop\porting\public\gameBoard" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="app.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/app.js" working-dir="$PROJECT_DIR$">
@@ -216,7 +78,7 @@
       <workItem from="1603252740552" duration="6944000" />
       <workItem from="1603260751372" duration="2802000" />
       <workItem from="1603265355818" duration="20000" />
-      <workItem from="1603332552438" duration="715000" />
+      <workItem from="1603332552438" duration="1794000" />
     </task>
     <task id="LOCAL-00001" summary="matchmake working on gameboard and got rid of redundancies">
       <created>1603255118950</created>
