@@ -8,6 +8,7 @@ let payload = {
     userId: userId,
     userName: userName
 }
+let storyteller;
 
 //in case of send the user array back to server for next storyteller
 //sort it here
@@ -23,12 +24,40 @@ const findStoryteller = (array) => {
     }
 
 }
+function mapCard(cardsIndex){
+    let deckPath = "dixitCards/"
+    let card = deckPath.concat(cardsIndex)
+    card = card.concat(".PNG")
+    console.log("card:   ", cardsIndex)
+    console.log("card path:   ", card)
+    return card
+}
 
 $(document).ready(function () {
     console.log("user name:    ", sessionStorage.getItem('userName'));
     console.log("user id:    ", sessionStorage.getItem('userId'));
     console.log('user cards are');
     console.log(cards);
+    console.log(cards[0]);
+    console.log(cards[1]);
+    console.log(cards[2]);
+    console.log(cards[3]);
+    console.log(cards[4]);
+    console.log(cards[5]);
+    console.log(cards[6]);
+    console.log("lenght of cards:   ", cards.length)
+
+
+
+    document.getElementById("p1c1").src = mapCard(cards[0])
+    document.getElementById("p1c2").src = mapCard(cards[1])
+    document.getElementById("p1c3").src = mapCard(cards[2])
+    document.getElementById("p1c4").src = mapCard(cards[3])
+    document.getElementById("p1c5").src = mapCard(cards[4])
+    document.getElementById("p1c6").src = mapCard(cards[5])
+
+
+
 
 
     socket.emit('joinRoom', payload)
@@ -55,9 +84,7 @@ socket.on('roomNumber', data => { //
 // //once received the start game event from server
 socket.on('startGame', data=>{
     alert("found players")
-    $("#p1c1").src( "assets/DixitCards/", cards[0], ".PNG") //fix src address
-    $("#p1c2").src("assets/DixitCards/", cards[1], ".PNG")
-    $("#p1c3").src("assets/DixitCards/", cards[2], ".PNG")
+
 
 
     /*ready to play
@@ -73,7 +100,7 @@ socket.on('startGame', data=>{
     // }
 
      //the information about storyteller
-     let storyteller = findStoryteller(data)
+     storyteller = findStoryteller(data)
     
 
      if (payload.userId == storyteller.Id) {
@@ -96,6 +123,7 @@ socket.on('startGame', data=>{
 
 //when receiving info from storyteller
 let selectedCards = []
+
 cards.push({storyteller, storytellerCard})
 socket.on("storyTheme", data => {
     //*add html element to show theme to UI
