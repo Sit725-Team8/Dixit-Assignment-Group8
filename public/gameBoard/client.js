@@ -2,7 +2,8 @@ const socket = io.connect('http://localhost:3030')
 
 let userId = sessionStorage.getItem('userId')
 let userName = sessionStorage.getItem('userName')
-let cards = sessionStorage.getItem('cards')
+let rawcards = sessionStorage.getItem('cards')
+let cards = rawcards.split(",").map(Number);
 
 let payload = {
     userId: userId,
