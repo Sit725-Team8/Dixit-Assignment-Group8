@@ -2,8 +2,8 @@
  * 
  * @param {[storyTeller:boolean,
  *          score: index,
- *          name:username(string)
- *          Id:userId(string)],
+ *          userName:user name(string)
+ *          userId:userId(string)],
  *          voteCard:card bring in this round(index),
  *          holdCard:card that belong to this user(index)
  *          } array 
@@ -50,9 +50,9 @@ const calculate = array => {
 /**
  * 
  * @param {[storyTeller:boolean,
- *          name:username(string),
+ *          userName:user name(string),
  *          score: index,
- *          Id:userId(string),
+ *          userId:userId(string),
  *          voteCard:card bring in this round(index),
  *          holdCard:card that belong to this user(index),
  *          score:index

@@ -26,8 +26,8 @@ const socketIo = (io) => {
          * 
          * @param {[storyTeller:boolean,
          *          score: index,
-         *          name:username(string)
-         *          Id:userId(string)],
+         *          userName:user name(string)
+         *          userId:userId(string)],
          *          room:room name(string),
          *          holdCard:card that belong to this user(index),
          *          message: theme(string)
@@ -42,14 +42,14 @@ const socketIo = (io) => {
             //do not really need emit the whole data
             //the propose to have the whole data send by client is because will used for calculate result 
             //should change the socket name 
-            io.to(room).emit('some socket', data.message)
+            io.to(room).emit('storyDisplay', data.message)
         })
         /**
          * 
          * @param {[storyTeller:boolean,
          *          score: index,
-         *          name:username(string)
-         *          Id:userId(string)],
+         *          userName:user name(string)
+         *          userId:userId(string)],
          *          voteCard:card bring in this round(index),
          *          holdCard:card that belong to this user(index),
          *          room: room name
@@ -99,7 +99,7 @@ const socketIo = (io) => {
             //add the room into the array which store every user information in server side 
             userArray.forEach(element => {
 
-                if (element.Id == data.userId) {
+                if (element.userId == data.userId) {
                     element.room = room
                     console.log(`room: ${element.room} added to user ${data.userName}`);
                 }
@@ -140,6 +140,10 @@ const socketIo = (io) => {
                 //the propose is send whole array is because we may have many rooms in game at same time
                 io.to(room).emit('startGame', currentPlayer)
             }
+        })
+        socket.on('ChoiceCard',data=>{
+            // sending to all clients in room except sender
+            socket.broadcast.to(data.room).emit('updateUI',data)
         })
 
 
