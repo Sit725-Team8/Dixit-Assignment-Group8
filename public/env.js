@@ -5,7 +5,7 @@ const newPlayer = async () => {
     let text = $('#inputName').val()
     console.log(text);
     let data = {
-        name: text,
+        userName: text,
         storyTold: 0,
         stories: [],
         score: 0
@@ -21,12 +21,14 @@ const newPlayer = async () => {
             //give that two variables values
             //which you can use what ever in this user's front end
             console.log(result);
-            sessionStorage.setItem('userName', result.name);
-            sessionStorage.setItem('userId', result.Id);
+            sessionStorage.setItem('userName', result.userName);
+            sessionStorage.setItem('userId', result.userId);
+            sessionStorage.setItem('score', 0)
             
 
             console.log(sessionStorage.getItem('userName'));
             console.log(sessionStorage.getItem('userId'));
+            console.log(sessionStorage.getItem('score'));
         }
 
 

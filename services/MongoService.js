@@ -29,8 +29,8 @@ const insertProfile = (objectToInsert, res) => {
       console.log(err);
     } else {
       let payload = {
-        Id:objectToInsert._id,
-        name:objectToInsert.name
+        userId:objectToInsert._id,
+        userName:objectToInsert.userName
       }
       console.log(payload);
       userIdArray.push(payload)
