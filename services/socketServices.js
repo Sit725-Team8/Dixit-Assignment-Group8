@@ -1,7 +1,5 @@
-const {
-    calculate
-} = require('./calculatorService')
-const cal = require('./calculatorService')
+
+
 const userArray = require('./MongoService').userIdArray
 const calFunction = require('./calculatorService').calculate
 
@@ -158,6 +156,5 @@ const socketIo = (io) => {
 
 
 module.exports = {
-    openSocket: socketIo,
-    resultArray
+    openSocket: socketIo
 }
