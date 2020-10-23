@@ -25,6 +25,15 @@ const findStoryteller = (array) => {
 }
 
 const startGame = (data) => {
+
+    if(cards.length < 6 )//if the next round
+    {
+        data.forEach(element => {
+            if(element.userId == userId){
+                cards.push(element.card)
+            }
+        });
+    }
     //when this round finished, this will be send back to server to decide next storyteller
     userInRoom = data;
     console.log('all user in room ');
@@ -41,6 +50,13 @@ const startGame = (data) => {
         console.log(`you are not the storyteller `);
         sessionStorage.setItem('storyteller', 'false')
     }
+    document.getElementById("p1c1").src = mapCard(cards[0])
+    document.getElementById("p1c2").src = mapCard(cards[1])
+    document.getElementById("p1c3").src = mapCard(cards[2])
+    document.getElementById("p1c4").src = mapCard(cards[3])
+    document.getElementById("p1c5").src = mapCard(cards[4])
+    document.getElementById("p1c6").src = mapCard(cards[5])
+
 }
 
 function mapCard(cardsIndex) {
@@ -52,12 +68,7 @@ function mapCard(cardsIndex) {
     return card
 }
 
-//vote should also be a function 
-//maybe this function should in the socket similarCard, because the data is the full array of cards bring out
-//inside the function, it has to emit to server with the card selected(maybe with your cards in case of calculate the score)
-const vote = () => {
 
-}
 
 
 /**
@@ -103,19 +114,44 @@ const removeCardFromHand = (cardArray, cardToBeRemove) => {
  * @param {the message from html element} message 
  */
 //this function is for storyteller to send message to server side 
-const sendMessage = (message, )=>{
+const sendMessage = (message) => {
     let payload = {
         storyTeller: true,
-        score:score,
-        userName:userName,
-        userId:userId,
+        score: score,
+        userName: userName,
+        userId: userId,
         room: sessionStorage.getItem('room'),
         holdCard: sessionStorage.getItem('holdCard'),
-        message,message
+        message,
+        message
     }
-    socket.emit('storyTheme',payload)
+    socket.emit('storyTheme', payload)
 }
 
+//function to vote
+const vote = () => {
+    let payload = {
+        storyTeller: false,
+        score: score,
+        userName: userName,
+        userId: userId,
+        room: sessionStorage.getItem('room'),
+        holdCard: sessionStorage.getItem('holdCard'),
+        voteCard: null //sessionStorage.getItem('voteCard'), when vote set this item to session
+
+    }
+    socket.emit('vote', payload)
+}
+
+//function to start next round, maybe a button or timer 
+const nextRound= ()=>{
+    let room = sessionStorage.getItem('room')
+    //only storyteller send the req to server to avoid duplicate respond
+    if(userId == storyteller.userId){
+        socket.emit('nextRound', {userInRoom,room })
+    }
+
+}
 
 $(document).ready(function () {
     console.log("user name:    ", sessionStorage.getItem('userName'));
@@ -133,12 +169,7 @@ $(document).ready(function () {
 
 
 
-    document.getElementById("p1c1").src = mapCard(cards[0])
-    document.getElementById("p1c2").src = mapCard(cards[1])
-    document.getElementById("p1c3").src = mapCard(cards[2])
-    document.getElementById("p1c4").src = mapCard(cards[3])
-    document.getElementById("p1c5").src = mapCard(cards[4])
-    document.getElementById("p1c6").src = mapCard(cards[5])
+    
 
 
 
@@ -181,19 +212,6 @@ socket.on('startGame', data => {
 })
 
 
-// /**
-//  * @param  { [userId:id,
-//  *            userName:user name,
-//  *            storytellerNo:integer]} data
-//  */
-// //listen to next round
-// socket.on('nextRound', data=>{
-//     startGame(data)
-// })
-
-
-//when receiving info from storyteller
-//let selectedCards = []
 
 //emit story to server first, the server record the story and then will emit back to socket 'storyTheme'(should be a io.to.emit)
 //because all players has to see the story.
@@ -204,19 +222,23 @@ socket.on("storyDisplay", data => {
 })
 
 
+/**
+ * @param {[storyTeller:boolean,
+ *          score: index,
+ *          userName:user name(string)
+ *          userId:userId(string)],
+ *          voteCard:card bring in this round(index),
+ *          holdCard:card that belong to this user(index)
+ *          } data 
+ */
+//this socket is used to get result from server side
+socket.on('showResult', data => { 
+    data.forEach(element => {
+        if(element.userId == userId){
+            sessionStorage.setItem('score', element.score)
+        }
+    });
 
-//if we listen the socket from server side
-//the guess array should generate on server side 
-//the data would be the array send from server side
-
-//then the logic should also write in the server side 
-//such as 
-//when player pick a card, emit to server side
-//the sever side say if length == 4 then emit that array to 'similarCard' socket
-
-socket.on("allPlayerSelectedCard", data => { //careful of data order
-    //the data should be the guess array and just notice users
-    //such as alter etc...
 
 })
 

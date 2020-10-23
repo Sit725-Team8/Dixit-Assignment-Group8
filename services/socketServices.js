@@ -2,6 +2,8 @@
 
 const userArray = require('./MongoService').userIdArray
 const calFunction = require('./calculatorService').calculate
+const assignCard = require('./assignCardService')
+const passStoryteller = require('./storytellerService').passStoryteller
 
 //an array store every player's respond from client side 
 //so we can have mutiple game process at the same time
@@ -81,7 +83,7 @@ const socketIo = (io) => {
                 //then the result will calculated 
                 let result = calFunction(playersForARoom)
                 //send the result back to the client side 
-                io.to(room).emit('some socket', result)
+                io.to(room).emit('showResult', result)
             }
 
         })
@@ -146,6 +148,16 @@ const socketIo = (io) => {
             socket.broadcast.to(data.room).emit('updateUI',data)
         })
 
+        /**
+         * @param {userId, userName, storytellerNo} array
+         */
+        //listen to next round
+        socket.on('nextRound', ({array, room})=>{
+            array.forEach(element => {
+                element.card = assignCard(assignCard.array)
+            });
+            passStoryteller(array,io,room)
+        })
 
 
 

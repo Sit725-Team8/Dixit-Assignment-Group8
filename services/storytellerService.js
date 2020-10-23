@@ -17,7 +17,7 @@
 //     name: '8',
 //     storytellerNo: 1,
 //     room: 'room2' } ]
-const passStoryteller = (currentPlayersArray,io) => {
+const passStoryteller = (currentPlayersArray,io,room) => {
     //record how many players has been twice storyteller
     let countOfPlayedOnce = 0;
     let countOfPlayedTwice = 0;
@@ -38,7 +38,7 @@ const passStoryteller = (currentPlayersArray,io) => {
         //io.to(room).emit('finish game')
     }else if(countOfPlayedOnce == 4){ //if every player played once 
         currentPlayersArray[0].storytellerNo++
-        //io.to(room).emit('nextRound',current players array)
+        io.to(room).emit('startGame', currentPlayersArray)
     }
     else{
         //pass the storyteller to next player 
@@ -48,11 +48,12 @@ const passStoryteller = (currentPlayersArray,io) => {
                 storyteller.storytellerNo++;
                 console.log('pass the storyteller to next player');
                 console.log(storyteller);
-                //io.to(room).emit('nextRound',current players array)
                 break;
             }
             
         }
+
+        io.to(room).emit('startGame', currentPlayersArray)
     }
 
     //return currentPlayersArray
@@ -61,3 +62,6 @@ const passStoryteller = (currentPlayersArray,io) => {
 
     // console.log('the current players array after pass the storyteller');
     // console.log(passStoryteller(testData));
+    module.exports = {
+        passStoryteller
+    }
