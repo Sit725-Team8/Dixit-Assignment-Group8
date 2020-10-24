@@ -15,11 +15,20 @@
 <script src="/socket.io/socket.io.js"></script>
   <script>
     $( function() {
-      $( "#dialog" ).dialog();
+      $( "#welcomeDialog" ).dialog();
+    } );
+    $( function() {
+      $( "#themeDialog" ).dialog();
     } );
   </script>
 <script type="module" src="client.js"></script>
-<!--GameBoard Html page background styles-->
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <!--GameBoard Html page background styles-->
 <style>
 body {
 	   font-family: "Gudea", sans-serif;
@@ -57,9 +66,20 @@ border-width: 1px;padding: 1px;border-style: solid;border-color: #9dcc7a;text-al
 </div>
 <!---Form Start--->
 
-<div id="dialog" title="Basic dialog">
-  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+<div id="welcomeDialog" title="matchmaking">
+  <p>Searching for players, please wait....</p>
 </div>
+
+<div id="themeDialog" title="Card Theme">
+  <p>please enter a theme that suits one of your cards</p>
+  <div class="input-field col s6">
+    <input id="theme" type="text" class="validate">
+    <a class="waves-effect waves-light btn">button</a>
+
+  </div>
+</div>
+
+
 </br></br>
 <center>
   <table class="tftable" cellspacing="0" border="0"><colgroup span="8" width="64"></colgroup>
