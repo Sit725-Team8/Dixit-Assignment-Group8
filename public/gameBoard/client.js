@@ -44,8 +44,8 @@ const startGame = (data) => {
     storyteller = findStoryteller(data)
     if (userId == storyteller.userId) {
         console.log(`you are the story teller`);
-
         sessionStorage.setItem('storyteller', 'true')
+
     } else {
         console.log(`you are not the storyteller `);
         sessionStorage.setItem('storyteller', 'false')

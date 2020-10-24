@@ -5,13 +5,19 @@
 <title>Game Login Page</title>
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
           crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="asset/css/mastercss.css" >
 <link rel="stylesheet" href="asset/css/all.css" >
 
 <link rel="shortcut icon" href="asset/images/faviconicon.jpg">
-
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="/socket.io/socket.io.js"></script>
-
+  <script>
+    $( function() {
+      $( "#dialog" ).dialog();
+    } );
+  </script>
 <script type="module" src="client.js"></script>
 <!--GameBoard Html page background styles-->
 <style>
@@ -41,6 +47,7 @@ border-width: 1px;padding: 1px;border-style: solid;border-color: #9dcc7a;text-al
       <div style="font-size:12px; font-style:italic; font-family:'Verdana', Times, serif; font-weight:bold; color:black;">(College Assignment Game on Study)</div>
       <div style="font-size:16px; font-family:'Verdana', Times, serif; font-weight:bold; color:blue;">Developed By : ........................</div>
 </div>
+
 </div>
 <div style="text-align: center; color: red; font-size: 18px;">
 </br></br>
@@ -49,6 +56,10 @@ border-width: 1px;padding: 1px;border-style: solid;border-color: #9dcc7a;text-al
 <a href="../homePage/homePage.html" value="Logout"> <span style="text-align: right; color: red; font-size: 18px;"><i class="fas fa-power-off"></i>  Close Game  </span>  </a>
 </div>
 <!---Form Start--->
+
+<div id="dialog" title="Basic dialog">
+  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+</div>
 </br></br>
 <center>
   <table class="tftable" cellspacing="0" border="0"><colgroup span="8" width="64"></colgroup>
