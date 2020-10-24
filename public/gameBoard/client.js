@@ -13,6 +13,15 @@ let storyteller;
 //sort it here
 let userInRoom = []
 
+$( function() {
+    $( "#welcomeDialog" ).dialog();
+    $( "#welcomeDialog" ).parent().find(".ui-dialog-titlebar-close").hide()
+} );
+$( function() {
+    $( "#themeDialog" ).dialog();
+    $( "#themeDialog" ).parent().find(".ui-dialog-titlebar-close").hide()
+} );
+
 const findStoryteller = (array) => {
     for (let index = 0; index < array.length - 1; index++) {
         if (array[index].storytellerNo - array[index + 1].storytellerNo == 1) {
@@ -168,6 +177,7 @@ $(document).ready(function () {
     console.log("lenght of cards:   ", cards.length)
     document.getElementById("voteBtn").style.display = "none";
     document.getElementById("guessBtn").style.display = "none";
+    document.getElementById("themeDialog").style.display = "none";
 
 
 
@@ -211,6 +221,7 @@ socket.on('roomNumber', data => { //
 // //once received the start game event from server
 socket.on('startGame', data => {
     startGame(data)
+    $('#welcomeDialog').dialog('close')
 })
 
 
