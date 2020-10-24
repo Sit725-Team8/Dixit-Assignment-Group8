@@ -178,10 +178,16 @@ $(document).ready(function () {
     document.getElementById("voteBtn").style.display = "none";
     document.getElementById("guessBtn").style.display = "none";
     document.getElementById("themeDialog").style.display = "none";
+    $("#themeBtn").click(function(){
+        let thisTheme = $('#themeInput').val();
+        console.log(thisTheme)
+        $('#themeDialog').dialog('close')
+        //either use emit or set variable and emit elsewhere
+    })
 
 
 
-    
+
 
 
 
