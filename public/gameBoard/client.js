@@ -166,6 +166,8 @@ $(document).ready(function () {
     console.log(cards[4]);
     console.log(cards[5]);
     console.log("lenght of cards:   ", cards.length)
+    document.getElementById("voteBtn").style.display = "none";
+    document.getElementById("guessBtn").style.display = "none";
 
 
 
