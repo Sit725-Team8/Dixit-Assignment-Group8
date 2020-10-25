@@ -109,6 +109,8 @@ const startGame = (data) => {
             console.log(thisTheme);
             theme = thisTheme;
             $('#themeDialog').dialog('close');
+            sendMessage(theme);
+            theme = null //maybe stop error later idk
             //either use emit or set variable and emit elsewhere
             //socket.emit("theme", {userId, userName, thisTheme})
             //call send message method
@@ -275,16 +277,16 @@ socket.on('startGame', data => {
 socket.on("storyDisplay", data => {
     //display the story to all users interface
     //some element.append such as that
-    let theme = data.thisTheme
+    let theme = data
     console.log("theme recieved:  ", theme)
     $("#themeTag").text(("Theme: ", theme))
     $( function() {
-        $( "#themeDialog" ).dialog();
+        $( "#chooseCardDialog" ).dialog();
         //short timer
     } );
     $("#themeCardBtn").show();
     $("#themeCardBtn").click(function(){
-        //send card to next
+        //se
     })
 
 
