@@ -26,12 +26,12 @@ $(function () {
 $(function () {
     $("#themeDialog").dialog();
     $("#themeDialog").parent().find(".ui-dialog-titlebar-close").hide()
-    
+
 });
 
 $(function () {
     $("#chooseCardDialog").dialog();
-    
+
 });
 
 
@@ -73,7 +73,7 @@ $(document).ready(function () {
         userName: userName
     })
 
-    
+
 
 
 });
@@ -113,12 +113,12 @@ const startGame = (data) => {
         console.log(`you are the story teller`);
         sessionStorage.setItem('storyteller', 'true')
         $("#themeCardBtn").show();
-        
+
         $("#themeCardBtn").click(function () {
             if (selectedCard != null) {
                 $('#themeDialog').dialog('open')
                 $("#themeDialog").show();
-                
+
             }
         })
 
@@ -368,15 +368,24 @@ socket.on('updateUI', data => {
     document.getElementById("p4c6").style.display = "none";
     let count = 1;
 
-    data.forEach(element => {
-        //display each hold card data
-        let thisID = "guess"
-        thisID.concat(count.toString())
-        console.log("ID:   ",   thisID)
-        document.getElementById("guess1").src = mapCard(data.holdCard)
+   
 
-
+    let array = [];
+    while (array.length < 4) {
+        var r = Math.floor(Math.random() * 4);
+        if (array.indexOf(r) === -1) array.push(r);
+    }
+    let thisID = "guess"
+    thisID.concat(count.toString())
+    console.log("ID:   ", thisID)
+    array.forEach(element => {
+        cardId = thisID + count;
+        count++;
+        document.getElementById(cardId).src = data[element].holdCard
     });
+
+    
+
 
     if (sessionStorage.getItem('storyteller' == 'false')) {
         //can ask players to vote here 
