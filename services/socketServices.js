@@ -195,28 +195,7 @@ const socketIo = (io) => {
             });
             passStoryteller(array,io,room)
             //when a game round if finished, should remove the data from array for next round
-            // let index = []
-            // await inGameArray.forEach(element => {
-            //     if(element.room == room){
-            //         index.push(inGameArray.indexOf(element))
-                    
-            //     }
-            // });
-            // console.log(`the index is `);
-            // console.log(index);
-            // await index.forEach(element => {
-            //     inGameArray.splice(element,1)
-            // });
-            // let votedIndex = []
-            // await playerVoted.forEach(element => {
-            //     if(element.room == room){
-            //         votedIndex.push(playerVoted.indexOf(element))
-            //     }
-            // });
-
-            // await votedIndex.forEach(element => {
-            //     playerVoted.splice(element,1)
-            // });
+            
             inGameArray.length = 0;
             playerVoted.length = 0;
             console.log(`in game array:`);

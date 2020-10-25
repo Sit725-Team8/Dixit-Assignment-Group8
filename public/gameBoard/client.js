@@ -97,21 +97,24 @@ $(document).ready(function () {
 
 
 const findStoryteller = (array) => {
-    // for (let index = 0; index < array.length ; index++) {
-    //     // if (array[index].storytellerNo - array[index + 1].storytellerNo == 1) {
 
-    //     //     return array[index]
-    //     // }
+    let playOnce = 0;
+    let playTwice = 0;
+    let node
+    for (let index = 0; index < array.length - 1; index++) {
+        if (array[index].storytellerNo == 1) playOnce++;
+        if (array[index].storytellerNo == 2) playTwice++;
+        if (array[index].storytellerNo - array[index + 1].storytellerNo == 1) {
 
-
-    // }
-    array.forEach(element => {
-        console.log(element);
-        if (element.storytellerNo == 1) {
-            console.log(element);
-            return element
+            node = array[index]
         }
-    });
+
+
+    }
+    if(playOnce == 3 && array[3].storytellerNo == 1) node = array[3]
+    if(playTwice == 3 && array[3].storytellerNo == 2) node = array[3]
+    return node
+    
 
 }
 
@@ -133,7 +136,7 @@ const startGame = (data) => {
     document.getElementById("themeCardBtn").style.display = "none"; //design choice
     document.getElementById("themeDialog").style.display = "none"; //hide ui dialog (Bugged)
     document.getElementById("chooseCardDialog").style.display = "none";
-    
+
     selectedCard = null
     guessCard = null
     $("#themeDialog").dialog('close');
@@ -159,12 +162,7 @@ const startGame = (data) => {
     console.log(userInRoom);
 
     //the information about storyteller
-    // let storyteller = findStoryteller(data)
-    data.forEach(element => {
-        if (element.storytellerNo == 1) {
-            storyteller = element
-        }
-    });
+    storyteller = findStoryteller(data)
     console.log(`storyteller is `);
     console.log(storyteller);
     if (userId == storyteller.userId) {
@@ -498,4 +496,5 @@ socket.on('updateUI', data => {
 
 socket.on('endGame', () => {
     alert('The game has finished, you can see the scoreboard at left top, thanks for your playing')
+    console.log(`should end game`);
 })

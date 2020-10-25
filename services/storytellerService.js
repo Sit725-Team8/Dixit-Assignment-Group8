@@ -43,31 +43,19 @@ const passStoryteller = (currentPlayersArray,io,room) => {
     else{
       
         //pass the storyteller to next player 
-        // for (let index = 0; index < currentPlayersArray.length - 1; index++) {
-        //     if(currentPlayersArray[index].storytellerNo - currentPlayersArray[index+1].storytellerNo == 1){
-        //         let storyteller = currentPlayersArray[index+1]
-        //         storyteller.storytellerNo++;
-        //         console.log('pass the storyteller to next player');
-        //         console.log(storyteller);
-        //         console.log(`the whole array is `);
-        //         console.log(currentPlayersArray);
-        //         break;
-        //     }
-            
-        // }
-
-
         for (let index = 0; index < currentPlayersArray.length - 1; index++) {
             if(currentPlayersArray[index].storytellerNo - currentPlayersArray[index+1].storytellerNo == 1){
-                currentPlayersArray[index].storytellerNo = 0;
-                currentPlayersArray[index+1].storytellerNo = 1
-                
+                let storyteller = currentPlayersArray[index+1]
+                storyteller.storytellerNo++;
+                console.log('pass the storyteller to next player');
+                console.log(storyteller);
                 console.log(`the whole array is `);
                 console.log(currentPlayersArray);
                 break;
             }
             
         }
+
         
 
         io.to(room).emit('startGame', currentPlayersArray)
