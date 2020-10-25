@@ -57,22 +57,28 @@ border-width: 1px;padding: 1px;border-style: solid;border-color: #9dcc7a;text-al
   Select Player : <span id="data1"> select player</span>   &nbsp;&nbsp;&nbsp;&nbsp; ||   &nbsp;&nbsp;&nbsp;&nbsp; 
 <a href="../homePage/homePage.html" value="Logout"> <span style="text-align: right; color: red; font-size: 18px;"><i class="fas fa-power-off"></i>  Close Game  </span>  </a>
 </div>
-<!---Form Start--->
 
+<!--Dialogs -->
 <div id="welcomeDialog" title="matchmaking">
   <p>Searching for players, please wait....</p>
 </div>
+
+<div id="chooseCardDialog" title="Choose a card">
+  <p>Select a card that matches the theme</p>
+</div>
+
+
 
 <div id="themeDialog" title="Card Theme">
   <p>please enter a theme that suits one of your cards</p>
   <div class="input-field col s6">
     <input id="themeInput" type="text" class="validate">
     <a class="waves-effect waves-light btn" id="themeBtn">submit</a>
-
   </div>
 </div>
 
 
+<!---Structure Start--->
 </br></br>
 <center>
   <table class="tftable" cellspacing="0" border="0"><colgroup span="8" width="64"></colgroup>
@@ -189,7 +195,7 @@ border-width: 1px;padding: 1px;border-style: solid;border-color: #9dcc7a;text-al
       <td  height="20"  valign=top><br></td>
       <td   valign=top><br></td><td   valign=top><br></td>
       <td  colspan=2  ><input type="button" value="Vote" name="voteBtn" id="voteBtn"></td>
-      <td  colspan=2  ><input type="button" value="Guess" name="guessBtn" id="guessBtn"></td>
+      <td  colspan=2  ><input type="button" value="Guess" name="themeCardBtn" id="themeCardBtn"></td>
       <td   valign=top><br></td>
   
       <td   valign=top><br></td><td   valign=top><br></td>
@@ -220,7 +226,7 @@ border-width: 1px;padding: 1px;border-style: solid;border-color: #9dcc7a;text-al
 
     </tr>
   </table>
-
+<h2 style="color: white" id="themeTag">Theme: </h2>
 
 </center>
 <!---End Form--->

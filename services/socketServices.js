@@ -147,7 +147,7 @@ const socketIo = (io) => {
         socket.on("theme", data =>{
             //can save to db or server if necessary
             console.log(data.thisTheme)
-            io.to(data.room).emit('themeReply', data)
+            io.to(data.room).emit("storyDisplay", data)
         })
 
 

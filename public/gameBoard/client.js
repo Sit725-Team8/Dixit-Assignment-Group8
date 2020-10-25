@@ -25,6 +25,47 @@ $( function() {
 
 
 
+//
+//
+//  START
+//
+//
+//
+$(document).ready(function () {
+    console.log("user name:    ", sessionStorage.getItem('userName'));
+    console.log("user id:    ", sessionStorage.getItem('userId'));
+    console.log("score is :    ", sessionStorage.getItem('score'));
+    console.log('user cards are');
+    console.log(cards);
+    console.log("length of cards:   ", cards.length)
+    document.getElementById("voteBtn").style.display = "none"; //design choice
+    document.getElementById("themeCardBtn").style.display = "none"; //design choice
+    document.getElementById("themeDialog").style.display = "none"; //hide ui dialog (Bugged)
+
+    //tie in with button when socket.emit is recieved
+    $(".p1card").click(function(){ //class of player 1 cards
+        console.log("you clicked a card, good job!")
+        console.log("card clicked:    " ,this.src)
+
+
+
+    })
+
+
+
+
+
+
+    socket.emit('joinRoom', {
+        userId: userId,
+        userName: userName
+    })
+
+
+});
+
+
+
 const findStoryteller = (array) => {
     for (let index = 0; index < array.length - 1; index++) {
         if (array[index].storytellerNo - array[index + 1].storytellerNo == 1) {
@@ -35,6 +76,7 @@ const findStoryteller = (array) => {
     }
 
 }
+
 
 const startGame = (data) => {
 
@@ -180,44 +222,6 @@ const nextRound= ()=>{
 }
 
 
-//
-//
-//  START
-//
-//
-//
-$(document).ready(function () {
-    console.log("user name:    ", sessionStorage.getItem('userName'));
-    console.log("user id:    ", sessionStorage.getItem('userId'));
-    console.log("score is :    ", sessionStorage.getItem('score'));
-    console.log('user cards are');
-    console.log(cards);
-    console.log("length of cards:   ", cards.length)
-    document.getElementById("voteBtn").style.display = "none"; //design choice
-    document.getElementById("guessBtn").style.display = "none"; //design choice
-    document.getElementById("themeDialog").style.display = "none"; //hide ui dialog (Bugged)
-
-    //tie in with button when socket.emit is recieved
-    $(".p1card").click(function(){ //class of player 1 cards
-        console.log("you clicked a card, good job!")
-        console.log("card clicked:    " ,this.src)
-
-
-
-    })
-
-
-
-
-
-
-    socket.emit('joinRoom', {
-        userId: userId,
-        userName: userName
-    })
-
-
-});
 
 
 
@@ -250,12 +254,25 @@ socket.on('startGame', data => {
 
 
 
-//emit story to server first, the server record the story and then will emit back to socket 'storyTheme'(should be a io.to.emit)
-//because all players has to see the story.
+
+
 
 socket.on("storyDisplay", data => {
     //display the story to all users interface
-    //some element.append such as that 
+    //some element.append such as that
+    let theme = data.thisTheme
+    console.log("theme recieved:  ", theme)
+    $("#themeTag").text(("Theme: ", theme))
+    $( function() {
+        $( "#themeDialog" ).dialog();
+        //short timer
+    } );
+    $("#themeCardBtn").show();
+    $("#themeCardBtn").click(function(){
+        //send card to next
+    })
+
+
 })
 
 
