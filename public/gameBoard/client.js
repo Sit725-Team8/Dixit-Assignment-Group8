@@ -1,3 +1,5 @@
+const { data } = require("jquery");
+
 const socket = io.connect('http://localhost:3030')
 
 let userId = sessionStorage.getItem('userId')
@@ -56,6 +58,12 @@ $(document).ready(function () {
     document.getElementById("themeCardBtn").style.display = "none"; //design choice
     document.getElementById("themeDialog").style.display = "none"; //hide ui dialog (Bugged)
     document.getElementById("chooseCardDialog").style.display = "none";
+
+    //init
+    document.getElementById("p2c6").style.visibility = 'visible';
+    document.getElementById("p3c6").style.visibility = 'visible';
+    document.getElementById("p4c6").style.visibility = 'visible';
+    document.getElementById("p1c6").style.visibility = 'visible'
     //tie in with button when socket.emit is recieved
     $(".p1card").click(function () { //class of player 1 cards
         console.log("card clicked:    ", this.src) //test
@@ -191,7 +199,12 @@ const ChoiceCard = (cardSelected) => {
 
     //change own ui here
     //because if we change own ui here we dot have to send the card data which will broadcast to everyone
-
+    document.getElementById("p1c1").src = mapCard(cards[0])
+    document.getElementById("p1c2").src = mapCard(cards[1])
+    document.getElementById("p1c3").src = mapCard(cards[2])
+    document.getElementById("p1c4").src = mapCard(cards[3])
+    document.getElementById("p1c5").src = mapCard(cards[4])
+    document.getElementById("p1c6").style.visibility = 'hidden'
 
 
 
@@ -372,9 +385,9 @@ socket.on('updateUI', data => {
 
     //display the cards that all players bring out for vote
 
-    document.getElementById("p2c6").style.display = "none";
-    document.getElementById("p3c6").style.display = "none";
-    document.getElementById("p4c6").style.display = "none";
+    document.getElementById("p2c6").style.visibility = 'hidden';
+    document.getElementById("p3c6").style.visibility = 'hidden';
+    document.getElementById("p4c6").style.visibility = 'hidden';
     let count = 1;
 
 
@@ -411,4 +424,8 @@ socket.on('updateUI', data => {
     }
 
 
+})
+
+socket.on('endGame', ()=>{
+    alert('The game has finished, you can see the scoreboard at left top, thanks for your playing')
 })

@@ -35,7 +35,7 @@ const passStoryteller = (currentPlayersArray,io,room) => {
     //the game should finish
     if(countOfPlayedTwice == 4){
         console.log('The game should finish');
-        //io.to(room).emit('finish game')
+        io.to(room).emit('endGame')
     }else if(countOfPlayedOnce == 4){ //if every player played once 
         currentPlayersArray[0].storytellerNo++
         io.to(room).emit('startGame', currentPlayersArray)
