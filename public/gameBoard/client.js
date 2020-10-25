@@ -299,9 +299,25 @@ socket.on("storyDisplay", data => {
     let theme = data
     console.log("theme recieved:  ", theme)
     $("#themeTag").text(("Theme: ", theme))
-    $("#chooseCardDialog").show()
+    if() {
+        $("#chooseCardDialog").show()
+    }
     $("#themeCardBtn").show();
     $("#themeCardBtn").click(function(){
+        let cardIndex = selectedCard.match(/\d+/g).map(Number); // replace all leading non-digits with nothing
+        console.log("cardIndex: ", cardIndex)
+        let theCard = parseInt(cardIndex[1])
+        console.log("the card:  ", theCard)
+        ChoiceCard(cardIndex[1]);
+        sendMessage(theme);
+
+
+
+
+
+
+
+
 
         //se
     })
