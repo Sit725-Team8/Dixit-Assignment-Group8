@@ -117,6 +117,7 @@ const startGame = (data) => {
         
         $("#themeCardBtn").click(function () {
             if (selectedCard != null) {
+                $('#themeDialog').dialog('open')
                 $("#themeDialog").show();
                 
             }
