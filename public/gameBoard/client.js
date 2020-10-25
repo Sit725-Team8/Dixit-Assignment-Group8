@@ -192,16 +192,19 @@ $(document).ready(function () {
     console.log("score is :    ", sessionStorage.getItem('score'));
     console.log('user cards are');
     console.log(cards);
-    console.log(cards[0]);
-    console.log(cards[1]);
-    console.log(cards[2]);
-    console.log(cards[3]);
-    console.log(cards[4]);
-    console.log(cards[5]);
     console.log("length of cards:   ", cards.length)
-    document.getElementById("voteBtn").style.display = "none";
-    document.getElementById("guessBtn").style.display = "none";
-    document.getElementById("themeDialog").style.display = "none";
+    document.getElementById("voteBtn").style.display = "none"; //design choice
+    document.getElementById("guessBtn").style.display = "none"; //design choice
+    document.getElementById("themeDialog").style.display = "none"; //hide ui dialog (Bugged)
+
+    //tie in with button when socket.emit is recieved
+    $(".p1card").click(function(){ //class of player 1 cards
+        console.log("you clicked a card, good job!")
+        console.log("card clicked:    " ,this.src)
+
+
+
+    })
 
 
 
