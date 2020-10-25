@@ -193,7 +193,16 @@ const socketIo = (io) => {
             index.forEach(element => {
                 inGameArray.splice(element,1)
             });
+            let votedIndex = []
+            playerVoted.forEach(element => {
+                if(element.room == room){
+                    votedIndex.push(playerVoted.indexOf(element))
+                }
+            });
 
+            votedIndex.forEach(element => {
+                playerVoted.splice(element,1)
+            });
         })
 
 
