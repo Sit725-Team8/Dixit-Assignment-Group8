@@ -13,6 +13,7 @@ let storyteller;
 //sort it here
 let userInRoom = []
 
+//jquery UI dialogs
 $( function() {
     $( "#welcomeDialog" ).dialog();
     $( "#welcomeDialog" ).parent().find(".ui-dialog-titlebar-close").hide()
@@ -21,6 +22,8 @@ $( function() {
     $( "#themeDialog" ).dialog();
     $( "#themeDialog" ).parent().find(".ui-dialog-titlebar-close").hide()
 } );
+
+
 
 const findStoryteller = (array) => {
     for (let index = 0; index < array.length - 1; index++) {
@@ -54,10 +57,24 @@ const startGame = (data) => {
     if (userId == storyteller.userId) {
         console.log(`you are the story teller`);
         sessionStorage.setItem('storyteller', 'true')
+        //document.getElementById("themeDialog").style.display = "true";
+        $("#themeDialog").show();
+        let theme;
+        $("#themeBtn").click(function(){
+            let thisTheme = $('#themeInput').val();
+            console.log(thisTheme);
+            theme = thisTheme;
+            $('#themeDialog').dialog('close');
+            //either use emit or set variable and emit elsewhere
+            socket.emit("theme", {userId, userName, thisTheme})
+        })
+
+
 
     } else {
         console.log(`you are not the storyteller `);
         sessionStorage.setItem('storyteller', 'false')
+        $('#themeDialog').dialog('close');
     }
     document.getElementById("p1c1").src = mapCard(cards[0])
     document.getElementById("p1c2").src = mapCard(cards[1])
@@ -162,6 +179,13 @@ const nextRound= ()=>{
 
 }
 
+
+//
+//
+//  START
+//
+//
+//
 $(document).ready(function () {
     console.log("user name:    ", sessionStorage.getItem('userName'));
     console.log("user id:    ", sessionStorage.getItem('userId'));
@@ -174,19 +198,10 @@ $(document).ready(function () {
     console.log(cards[3]);
     console.log(cards[4]);
     console.log(cards[5]);
-    console.log("lenght of cards:   ", cards.length)
+    console.log("length of cards:   ", cards.length)
     document.getElementById("voteBtn").style.display = "none";
     document.getElementById("guessBtn").style.display = "none";
     document.getElementById("themeDialog").style.display = "none";
-    $("#themeBtn").click(function(){
-        let thisTheme = $('#themeInput').val();
-        console.log(thisTheme)
-        $('#themeDialog').dialog('close')
-        //either use emit or set variable and emit elsewhere
-    })
-
-
-
 
 
 

@@ -143,6 +143,14 @@ const socketIo = (io) => {
                 io.to(room).emit('startGame', currentPlayer)
             }
         })
+
+        socket.on("theme", data =>{
+            //can save to db or server if necessary
+            console.log(data.thisTheme)
+            io.to(data.room).emit('themeReply', data)
+        })
+
+
         socket.on('ChoiceCard',data=>{
             // sending to all clients in room except sender
             socket.broadcast.to(data.room).emit('updateUI',data)
