@@ -1,5 +1,3 @@
-
-
 const socket = io.connect('http://localhost:3030')
 
 let userId = sessionStorage.getItem('userId')
@@ -17,19 +15,19 @@ let userInRoom = []
 let selectedCard;
 
 //jquery UI dialogs
-$( function() {
-    $( "#welcomeDialog" ).dialog();
-    $( "#welcomeDialog" ).parent().find(".ui-dialog-titlebar-close").hide()
-} );
+$(function () {
+    $("#welcomeDialog").dialog();
+    $("#welcomeDialog").parent().find(".ui-dialog-titlebar-close").hide()
+});
 
-$( function() {
-    $( "#themeDialog" ).dialog();
-    $( "#themeDialog" ).parent().find(".ui-dialog-titlebar-close").hide()
-} );
+$(function () {
+    $("#themeDialog").dialog();
+    $("#themeDialog").parent().find(".ui-dialog-titlebar-close").hide()
+});
 
-$( function() {
-    $( "#chooseCardDialog" ).dialog();
-} );
+$(function () {
+    $("#chooseCardDialog").dialog();
+});
 
 
 
@@ -53,8 +51,8 @@ $(document).ready(function () {
     document.getElementById("themeDialog").style.display = "none"; //hide ui dialog (Bugged)
     document.getElementById("chooseCardDialog").style.display = "none";
     //tie in with button when socket.emit is recieved
-    $(".p1card").click(function(){ //class of player 1 cards
-        console.log("card clicked:    " ,this.src) //test
+    $(".p1card").click(function () { //class of player 1 cards
+        console.log("card clicked:    ", this.src) //test
         selectedCard = this.src
         console.log("Selected Card Var:   ", selectedCard)
 
@@ -62,15 +60,17 @@ $(document).ready(function () {
 
     })
 
-
-
-
-
-
+    //start the game 
     socket.emit('joinRoom', {
         userId: userId,
         userName: userName
     })
+
+    if(storyteller.userId == userId){
+        storytellerAction();
+    }else{
+        //other players action 
+    }
 
 
 });
@@ -91,10 +91,10 @@ const findStoryteller = (array) => {
 
 const startGame = (data) => {
 
-    if(cards.length < 6 )//if the next round
+    if (cards.length < 6) //if the next round
     {
         data.forEach(element => {
-            if(element.userId == userId){
+            if (element.userId == userId) {
                 cards.push(element.card)
             }
         });
@@ -111,14 +111,14 @@ const startGame = (data) => {
         console.log(`you are the story teller`);
         sessionStorage.setItem('storyteller', 'true')
         $("#themeCardBtn").show();
-        $("#themeCardBtn").click(function(){
-            if(selectedCard != null){
+        $("#themeCardBtn").click(function () {
+            if (selectedCard != null) {
                 $("#themeDialog").show();
             }
         })
 
         let theme;
-        $("#themeBtn").click(function(){
+        $("#themeBtn").click(function () {
             let thisTheme = $('#themeInput').val();
             console.log(thisTheme);
             theme = thisTheme;
@@ -176,14 +176,14 @@ const ChoiceCard = (cardSelected) => {
 
     //change own ui here
     //because if we change own ui here we dot have to send the card data which will broadcast to everyone
-    
-    
-    
-    
+
+
+
+
     let storytellerBool = false
-    if( sessionStorage.getItem('storyteller') == 'true'){
+    if (sessionStorage.getItem('storyteller') == 'true') {
         storytellerBool = true
-    }else{
+    } else {
         let payload = {
             storyTeller: storytellerBool,
             score: score,
@@ -198,7 +198,7 @@ const ChoiceCard = (cardSelected) => {
     }
 
 
-    
+
 
 
 }
@@ -230,7 +230,7 @@ const sendMessage = (message) => {
         userId: userId,
         room: sessionStorage.getItem('room'),
         holdCard: sessionStorage.getItem('holdCard'),
-        message:message
+        message: message
     }
     socket.emit('storyTheme', payload)
 }
@@ -248,11 +248,14 @@ const vote = () => {
 }
 
 //function to start next round, maybe a button or timer 
-const nextRound= ()=>{
+const nextRound = () => {
     let room = sessionStorage.getItem('room')
     //only storyteller send the req to server to avoid duplicate respond
-    if(userId == storyteller.userId){
-        socket.emit('nextRound', {userInRoom,room })
+    if (userId == storyteller.userId) {
+        socket.emit('nextRound', {
+            userInRoom,
+            room
+        })
     }
 
 }
@@ -289,7 +292,23 @@ socket.on('startGame', data => {
 })
 
 
+const storytellerAction = () => {
+    //storyteller action logic
+    $("#chooseCardDialog").show()
+    $("#themeCardBtn").show();
+    $("#themeCardBtn").click(function () {
+        let cardIndex = selectedCard.match(/\d+/g).map(Number); // replace all leading non-digits with nothing
+        console.log("cardIndex: ", cardIndex)
+        let theCard = parseInt(cardIndex[1])
+        console.log("the card:  ", theCard)
+        ChoiceCard(cardIndex[1]);
+        sendMessage(theme);
+    })
 
+}
+const otherPlayerAction = ()=>{
+    //simliar logic 
+}
 
 
 
@@ -299,28 +318,8 @@ socket.on("storyDisplay", data => {
     let theme = data
     console.log("theme recieved:  ", theme)
     $("#themeTag").text(("Theme: ", theme))
-    if() {
-        $("#chooseCardDialog").show()
-    }
-    $("#themeCardBtn").show();
-    $("#themeCardBtn").click(function(){
-        let cardIndex = selectedCard.match(/\d+/g).map(Number); // replace all leading non-digits with nothing
-        console.log("cardIndex: ", cardIndex)
-        let theCard = parseInt(cardIndex[1])
-        console.log("the card:  ", theCard)
-        ChoiceCard(cardIndex[1]);
-        sendMessage(theme);
 
 
-
-
-
-
-
-
-
-        //se
-    })
 
 
 })
@@ -336,9 +335,9 @@ socket.on("storyDisplay", data => {
  *          } data 
  */
 //this socket is used to get result from server side
-socket.on('showResult', data => { 
+socket.on('showResult', data => {
     data.forEach(element => {
-        if(element.userId == userId){
+        if (element.userId == userId) {
             sessionStorage.setItem('score', element.score)
         }
     });
@@ -348,13 +347,13 @@ socket.on('showResult', data => {
 
 /**
  * @param {[storyTeller:boolean,
-    *          score: index,
-    *          userName:user name(string)
-    *          userId:userId(string)],
-    *          holdCard:card that belong to this user(index)
-    *          } data 
-    */
-socket.on('updateUI', data=>{
+ *          score: index,
+ *          userName:user name(string)
+ *          userId:userId(string)],
+ *          holdCard:card that belong to this user(index)
+ *          } data 
+ */
+socket.on('updateUI', data => {
     //change the other players ui
 
 
@@ -366,7 +365,6 @@ socket.on('updateUI', data=>{
     if (sessionStorage.getItem('storyteller' == 'false')) {
         //can ask players to vote here 
     }
-    
-    
-})
 
+
+})
