@@ -1,7 +1,6 @@
 #Profile {
-    background-image: url('./asset/createProfilePageBackground.jpg');
+    background-image: url('assets/createProfilePageBackground.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     height: 100%;
 }
-

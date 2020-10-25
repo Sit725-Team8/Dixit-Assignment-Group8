@@ -1,43 +1,53 @@
-<html>
+﻿<html>
 
 <head>
-    <title>Dixit</title>
-    <!-- jquery library  -->
-    <script src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <!-- materialize CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <title>Dixit</title>
+  <!-- jquery library  -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+  <!-- materialize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <!-- materialize JavaScrip -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="env.js"></script>
+  <!-- materialize JavaScrip -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script type="module" src="env.js"></script>
 
-    <link rel="stylesheet" href="styles.css">
+
+
+
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <div class="valign-wrapper" id="Profile">
-        
-        
-        
-        <div class="row">
-            
-            <div class="input-field col s12 center-align">
-                <div class="row" style="font-size: larger;"> Please Input Your Name</div>
-                <input id="inputName" type="text" class="validate">
-                <!-- <label class="active" for="input_name">Please Input Your Name</label> -->
-                <a class="waves-effect waves-light btn" id="profileButton">Submit</a>
-            </div>
-            
+  <div class="valign-wrapper" id="Profile">
+    <div class="row">
+      <div class="input-field col s12 center-align">
+        <div class="row" style="font-size: larger;">
+          <label style="display: block; text-align: center; color: red; font-size: larger;" id='userMsg'
+            text="sss"></label>
         </div>
 
-  
-                
-        
-       
-
+      </div>
+      <div id='userInfo' class="input-field col s12 center-align">
+        <div class="row" style="font-size: larger;"> Please Input Your Name</div>
+        <input id="inputName" type="text" class="validate">
+        <button class="waves-effect waves-light btn" id="profileButton">Create your Profile</a>
+      </div>
     </div>
+  </div>
+
+  <!-- <div class="row">
+        <div class="input-field col s6">
+          <input id="socketInput" type="text" class="validate">
+          <label class="active" for="socket">First Name</label>
+        </div>
+      </div>
+      <a class="waves-effect waves-light btn" id="socketButton">button</a>
+      <div id="socketOutput"> </div>
+      <div id="testId"> 
+        <a class="waves-effect waves-light btn" id="testButton">check User name and Id</a>
+      </div> -->
 
 
 

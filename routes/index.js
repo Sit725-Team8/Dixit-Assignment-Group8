@@ -1,3 +1,5 @@
 module.exports={
-    creatProfile:require('./createProfileRoute')
+    creatProfile:require('./createProfileRoute'),
+    assignCard:require('./assignCardsRoute')
+
 }
