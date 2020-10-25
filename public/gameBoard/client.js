@@ -376,12 +376,14 @@ socket.on('updateUI', data => {
         if (array.indexOf(r) === -1) array.push(r);
     }
     let thisID = "guess"
-    thisID.concat(count.toString())
+    //thisID.concat(count.toString())
     console.log("ID:   ", thisID)
     array.forEach(element => {
-        cardId = thisID + count;
+        let cardId = thisID + count;
+        console.log("card address:   ", cardId)
         count++;
-        document.getElementById(cardId).src = data[element].holdCard
+
+        document.getElementById(cardId).src = mapCard([element].holdCard)
     });
 
     
