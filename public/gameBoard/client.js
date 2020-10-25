@@ -13,6 +13,7 @@ let storyteller;
 //sort it here
 let userInRoom = []
 let selectedCard;
+let guessCard;
 
 //jquery UI dialogs
 $(function () {
@@ -59,6 +60,14 @@ $(document).ready(function () {
     $(".p1card").click(function () { //class of player 1 cards
         console.log("card clicked:    ", this.src) //test
         selectedCard = this.src
+        console.log("Selected Card Var:   ", selectedCard)
+
+
+
+    })
+    $(".midCard").click(function () { //class of player 1 cards
+        console.log("card clicked:    ", this.src) //test
+        guessCard = this.src
         console.log("Selected Card Var:   ", selectedCard)
 
 
@@ -242,12 +251,12 @@ const sendMessage = (message) => {
 }
 
 //function to vote
-const vote = () => {
+const vote = (card) => {
     let payload = {
         userName: userName,
         userId: userId,
         room: sessionStorage.getItem('room'),
-        voteCard: null //sessionStorage.getItem('voteCard'), when vote set this item to session
+        voteCard: card //sessionStorage.getItem('voteCard'), when vote set this item to session
 
     }
     socket.emit('vote', payload)
@@ -389,8 +398,16 @@ socket.on('updateUI', data => {
     
 
 
-    if (sessionStorage.getItem('storyteller' == 'false')) {
-        //can ask players to vote here 
+    if (sessionStorage.getItem('storyteller') == 'false') {
+        //can ask players to vote here
+        $("#voteBtn").show()
+        $("#voteBtn").click(function () {
+            if (guessCard != null) {
+                console.log("card voted for", guessCard)
+                vote(guessCard);
+                $("#voteBtn").hide()
+            }
+        })
     }
 
 
