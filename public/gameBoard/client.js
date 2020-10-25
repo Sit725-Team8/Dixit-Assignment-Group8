@@ -1,4 +1,4 @@
-const { data } = require("jquery");
+//const { data } = require("jquery");
 
 const socket = io.connect('http://localhost:3030')
 
@@ -367,7 +367,22 @@ socket.on('showResult', data => {
             sessionStorage.setItem('score', element.score)
         }
     });
-
+    console.log("username:  ", data[0].userName)
+    console.log("score:  ", data[0].score)
+    console.log("username:  ",data[1].userName)
+    console.log("score:  ",data[1].score)
+    console.log("username:  ", data[2].userName)
+    console.log("score:  ", data[2].score)
+    console.log("username:  ",data[3].userName)
+    console.log("score:  ",data[3].score)
+    $("#playerN1").text(data[0].userName)
+    $("#score1").text(data[0].score)
+    $("#playerN2").text(data[1].userName)
+    $("#score2").text(data[1].score)
+    $("#playerN3").text(data[2].userName)
+    $("#score3").text(data[2].score)
+    $("#playerN4").text(data[3].userName)
+    $("#score4").text(data[3].score)
 
 })
 
