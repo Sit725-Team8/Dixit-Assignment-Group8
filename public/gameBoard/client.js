@@ -14,16 +14,23 @@ let storyteller;
 //in case of send the user array back to server for next storyteller
 //sort it here
 let userInRoom = []
+let selectedCard;
 
 //jquery UI dialogs
 $( function() {
     $( "#welcomeDialog" ).dialog();
     $( "#welcomeDialog" ).parent().find(".ui-dialog-titlebar-close").hide()
 } );
+
 $( function() {
     $( "#themeDialog" ).dialog();
     $( "#themeDialog" ).parent().find(".ui-dialog-titlebar-close").hide()
 } );
+
+$( function() {
+    $( "#chooseCardDialog" ).dialog();
+} );
+
 
 
 
@@ -33,6 +40,7 @@ $( function() {
 //
 //
 //
+
 $(document).ready(function () {
     console.log("user name:    ", sessionStorage.getItem('userName'));
     console.log("user id:    ", sessionStorage.getItem('userId'));
@@ -43,11 +51,12 @@ $(document).ready(function () {
     document.getElementById("voteBtn").style.display = "none"; //design choice
     document.getElementById("themeCardBtn").style.display = "none"; //design choice
     document.getElementById("themeDialog").style.display = "none"; //hide ui dialog (Bugged)
-
+    document.getElementById("chooseCardDialog").style.display = "none";
     //tie in with button when socket.emit is recieved
     $(".p1card").click(function(){ //class of player 1 cards
-        console.log("you clicked a card, good job!")
-        console.log("card clicked:    " ,this.src)
+        console.log("card clicked:    " ,this.src) //test
+        selectedCard = this.src
+        console.log("Selected Card Var:   ", selectedCard)
 
 
 
@@ -101,8 +110,13 @@ const startGame = (data) => {
     if (userId == storyteller.userId) {
         console.log(`you are the story teller`);
         sessionStorage.setItem('storyteller', 'true')
-        //document.getElementById("themeDialog").style.display = "true";
-        $("#themeDialog").show();
+        $("#themeCardBtn").show();
+        $("#themeCardBtn").click(function(){
+            if(selectedCard != null){
+                $("#themeDialog").show();
+            }
+        })
+
         let theme;
         $("#themeBtn").click(function(){
             let thisTheme = $('#themeInput').val();
@@ -280,12 +294,10 @@ socket.on("storyDisplay", data => {
     let theme = data
     console.log("theme recieved:  ", theme)
     $("#themeTag").text(("Theme: ", theme))
-    $( function() {
-        $( "#chooseCardDialog" ).dialog();
-        //short timer
-    } );
+    $("#chooseCardDialog").show()
     $("#themeCardBtn").show();
     $("#themeCardBtn").click(function(){
+
         //se
     })
 
