@@ -106,7 +106,6 @@ const startGame = (data) => {
     userInRoom = data;
     console.log('all user in room ');
     console.log(userInRoom);
-    alert("found players")
 
     //the information about storyteller
     storyteller = findStoryteller(data)
@@ -135,6 +134,7 @@ const startGame = (data) => {
             console.log("the card:  ", theCard)
             ChoiceCard(cardIndex[1]);
             sendMessage(theme);
+            $("#themeCardBtn").hide()
             theme = null //maybe stop error later idk
             //either use emit or set variable and emit elsewhere
             //socket.emit("theme", {userId, userName, thisTheme})
@@ -312,6 +312,7 @@ socket.on("storyDisplay", data => {
     console.log("theme recieved:  ", theme)
     $("#themeTag").text(("Theme: ", theme))
     if (userId != storyteller.userId) {
+        $("#themeCardBtn").show()
 
         $("#themeCardBtn").click(function () {
             if (selectedCard != null) {
@@ -320,6 +321,7 @@ socket.on("storyDisplay", data => {
                 let theCard = parseInt(cardIndex[1])
                 console.log("the card:  ", theCard)
                 ChoiceCard(cardIndex[1]);
+                $("#themeCardBtn").hide()
 
             }
         })
@@ -360,8 +362,20 @@ socket.on('updateUI', data => {
 
 
     //display the cards that all players bring out for vote
+
+    document.getElementById("p2c6").style.display = "none";
+    document.getElementById("p3c6").style.display = "none";
+    document.getElementById("p4c6").style.display = "none";
+    let count = 1;
+
     data.forEach(element => {
         //display each hold card data
+        let thisID = "guess"
+        thisID.concat(count.toString())
+        console.log("ID:   ",   thisID)
+        document.getElementById("guess1").src = mapCard(data.holdCard)
+
+
     });
 
     if (sessionStorage.getItem('storyteller' == 'false')) {
