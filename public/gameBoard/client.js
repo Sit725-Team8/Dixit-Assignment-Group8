@@ -1,3 +1,5 @@
+const { data } = require("jquery");
+
 const socket = io.connect('http://localhost:3030')
 
 let userId = sessionStorage.getItem('userId')
@@ -108,7 +110,8 @@ const startGame = (data) => {
             theme = thisTheme;
             $('#themeDialog').dialog('close');
             //either use emit or set variable and emit elsewhere
-            socket.emit("theme", {userId, userName, thisTheme})
+            //socket.emit("theme", {userId, userName, thisTheme})
+            //call send message method
         })
 
 
@@ -152,13 +155,29 @@ const ChoiceCard = (cardSelected) => {
 
     //change own ui here
     //because if we change own ui here we dot have to send the card data which will broadcast to everyone
+    
+    
+    
+    
+    let storytellerBool = false
+    if( sessionStorage.getItem('storyteller') == 'true'){
+        storytellerBool = true
+    }else{
+        let payload = {
+            storyTeller: storytellerBool,
+            score: score,
+            userName: userName,
+            userId: userId,
+            room: sessionStorage.getItem('room'),
+            holdCard: sessionStorage.getItem('holdCard')
+        }
+        //emit to server so server can send back for all ui changes
+        //such as one card from hand disappear and move one card to middle
+        socket.emit('ChoiceCard', payload) //dot need to send the card data ect since its only for ui change
+    }
 
-    //emit to server so server can send back for all ui changes
-    //such as one card from hand disappear and move one card to middle
-    socket.emit('ChoiceCard', {
-        userId: userId,
-        room: sessionStorage.getItem('room')
-    }) //dot need to send the card data ect since its only for ui change
+
+    
 
 
 }
@@ -190,8 +209,7 @@ const sendMessage = (message) => {
         userId: userId,
         room: sessionStorage.getItem('room'),
         holdCard: sessionStorage.getItem('holdCard'),
-        message,
-        message
+        message:message
     }
     socket.emit('storyTheme', payload)
 }
@@ -199,12 +217,9 @@ const sendMessage = (message) => {
 //function to vote
 const vote = () => {
     let payload = {
-        storyTeller: false,
-        score: score,
         userName: userName,
         userId: userId,
         room: sessionStorage.getItem('room'),
-        holdCard: sessionStorage.getItem('holdCard'),
         voteCard: null //sessionStorage.getItem('voteCard'), when vote set this item to session
 
     }
@@ -296,12 +311,27 @@ socket.on('showResult', data => {
 
 })
 
-//when anther player bring a card update ui
-socket.on('updateUI', data => {
-    userInRoom.forEach(element => {
-        if (element.userId == data.userId) {
-            //logic to change the ui
-            //such as remove image element from that player and put a card back to the middle 
-        }
+/**
+ * @param {[storyTeller:boolean,
+    *          score: index,
+    *          userName:user name(string)
+    *          userId:userId(string)],
+    *          holdCard:card that belong to this user(index)
+    *          } data 
+    */
+socket.on('updateUI', data=>{
+    //change the other players ui
+
+
+    //display the cards that all players bring out for vote
+    data.forEach(element => {
+        //display each hold card data
     });
+
+    if (sessionStorage.getItem('storyteller' == 'false')) {
+        //can ask players to vote here 
+    }
+    
+    
 })
+
