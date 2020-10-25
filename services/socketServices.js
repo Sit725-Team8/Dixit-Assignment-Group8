@@ -86,8 +86,12 @@ const socketIo = (io) => {
                 });
                 //then the result will calculated 
                 let result = calFunction(playersForARoom)
+
+                //the array to cal
                 //send the result back to the client side 
                 io.to(room).emit('showResult', result)
+                console.log('the cal result is ' );
+                console.log(result);
             }
 
         })

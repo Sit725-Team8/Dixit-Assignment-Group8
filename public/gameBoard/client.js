@@ -369,22 +369,25 @@ socket.on('showResult', data => {
     });
     console.log("username:  ", data[0].userName)
     console.log("score:  ", data[0].score)
-    console.log("username:  ",data[1].userName)
-    console.log("score:  ",data[1].score)
+    console.log("username:  ", data[1].userName)
+    console.log("score:  ", data[1].score)
     console.log("username:  ", data[2].userName)
     console.log("score:  ", data[2].score)
-    console.log("username:  ",data[3].userName)
-    console.log("score:  ",data[3].score)
-    $("#playerN1").html(data[0].userName)
-    $("#score1").html(data[0].score)
-    $("#playerN2").html(data[1].userName)
-    $("#score2").html(data[1].score)
-    $("#playerN3").html(data[2].userName)
-    $("#score3").html(data[2].score)
-    $("#playerN4").html(data[3].userName)
-    $("#score4").html(data[3].score)
+    console.log("username:  ", data[3].userName)
+    console.log("score:  ", data[3].score)
+
+    document.getElementById('playerN1').innerHTML = (data[0].userName)
+    document.getElementById('score1').innerHTML = (data[0].score)
+    document.getElementById('playerN2').innerHTML = (data[1].userName)
+    document.getElementById('score2').innerHTML = (data[1].score)
+    document.getElementById('playerN3').innerHTML = (data[2].userName)
+    document.getElementById('score3').innerHTML = (data[2].score)
+    document.getElementById('playerN4').innerHTML = (data[3].userName)
+    document.getElementById('score5').innerHTML = (data[3].score)
+
 
 })
+
 
 /**
  * @param {[storyTeller:boolean,
@@ -419,11 +422,11 @@ socket.on('updateUI', data => {
         let cardId = thisID + count;
         console.log(cardId);
         count++;
-        document.getElementById(cardId).src = './dixitCards/'+ data[element].holdCard+'.png'
+        document.getElementById(cardId).src = './dixitCards/' + data[element].holdCard + '.png'
         console.log(data[element]);
     });
 
-    
+
 
 
     if (sessionStorage.getItem('storyteller') == 'false') {
@@ -445,6 +448,6 @@ socket.on('updateUI', data => {
 
 })
 
-socket.on('endGame', ()=>{
+socket.on('endGame', () => {
     alert('The game has finished, you can see the scoreboard at left top, thanks for your playing')
 })
