@@ -18,15 +18,20 @@ let selectedCard;
 $(function () {
     $("#welcomeDialog").dialog();
     $("#welcomeDialog").parent().find(".ui-dialog-titlebar-close").hide()
+    // $("#welcomeDialog").dialog({
+    //     autoOpen: false
+    // }).dialog("widget").find(".ui-dialog-title").hide();​
 });
 
 $(function () {
     $("#themeDialog").dialog();
     $("#themeDialog").parent().find(".ui-dialog-titlebar-close").hide()
+    
 });
 
 $(function () {
     $("#chooseCardDialog").dialog();
+    
 });
 
 
@@ -59,6 +64,8 @@ $(document).ready(function () {
 
 
     })
+    $("#themeDialog").dialog('close');
+    $("#chooseCardDialog").dialog('close');
 
     //start the game 
     socket.emit('joinRoom', {
@@ -66,11 +73,7 @@ $(document).ready(function () {
         userName: userName
     })
 
-    if(storyteller.userId == userId){
-        storytellerAction();
-    }else{
-        //other players action 
-    }
+    
 
 
 });
@@ -111,9 +114,11 @@ const startGame = (data) => {
         console.log(`you are the story teller`);
         sessionStorage.setItem('storyteller', 'true')
         $("#themeCardBtn").show();
+        
         $("#themeCardBtn").click(function () {
             if (selectedCard != null) {
                 $("#themeDialog").show();
+                
             }
         })
 
@@ -292,21 +297,8 @@ socket.on('startGame', data => {
 })
 
 
-const storytellerAction = () => {
-    //storyteller action logic
-    $("#chooseCardDialog").show()
-    $("#themeCardBtn").show();
-    $("#themeCardBtn").click(function () {
-        let cardIndex = selectedCard.match(/\d+/g).map(Number); // replace all leading non-digits with nothing
-        console.log("cardIndex: ", cardIndex)
-        let theCard = parseInt(cardIndex[1])
-        console.log("the card:  ", theCard)
-        ChoiceCard(cardIndex[1]);
-        sendMessage(theme);
-    })
 
-}
-const otherPlayerAction = ()=>{
+const otherPlayerAction = () => {
     //simliar logic 
 }
 
@@ -331,6 +323,7 @@ socket.on("storyDisplay", data => {
             }
         })
     }
+})
 
 
 /**
