@@ -123,6 +123,11 @@ const startGame = (data) => {
             console.log(thisTheme);
             theme = thisTheme;
             $('#themeDialog').dialog('close');
+            let cardIndex = selectedCard.match(/\d+/g).map(Number); // replace all leading non-digits with nothing
+            console.log("cardIndex: ", cardIndex)
+            let theCard = parseInt(cardIndex[1])
+            console.log("the card:  ", theCard)
+            ChoiceCard(cardIndex[1]);
             sendMessage(theme);
             theme = null //maybe stop error later idk
             //either use emit or set variable and emit elsewhere
