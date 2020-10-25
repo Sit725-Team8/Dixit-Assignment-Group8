@@ -1,4 +1,4 @@
-const { data } = require("jquery");
+
 
 const socket = io.connect('http://localhost:3030')
 

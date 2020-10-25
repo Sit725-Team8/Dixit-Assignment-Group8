@@ -27,9 +27,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4f29685e-1316-4ef1-939a-045ca7c3a97b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/gameBoard/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/gameBoard/client.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/gameBoard/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/gameBoard/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/socketServices.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/socketServices.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
