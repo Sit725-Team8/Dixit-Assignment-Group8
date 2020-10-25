@@ -42,6 +42,8 @@ const socketIo = (io) => {
 
 
             inGameArray.push(data)
+            console.log(`in game array is `);
+            console.log(inGameArray);
             let room = data.room
             //do not really need emit the whole data
             //the propose to have the whole data send by client is because will used for calculate result 
@@ -59,6 +61,8 @@ const socketIo = (io) => {
          */
         socket.on('vote', data => {
             playerVoted.push(data)
+            console.log(`player voted array`);
+            console.log(playerVoted);
             let room = data.room;
             let i = 0
             playerVoted.forEach(element => {
@@ -97,6 +101,8 @@ const socketIo = (io) => {
         })
         socket.on('ChoiceCard',data=>{
             inGameArray.push(data)
+            console.log(`in game array is `);
+            console.log(inGameArray);
             //foreach loop to get a room player
             let room = data.room;
             let i = 0
@@ -182,31 +188,41 @@ const socketIo = (io) => {
          * @param {userId, userName, storytellerNo} array
          */
         //listen to next round
-        socket.on('nextRound', ({array, room})=>{
-            array.forEach(element => {
-                element.card = assignCard(assignCard.array)
+        socket.on('nextRound', async (array)=>{
+            let room = array[0].room
+            await array.forEach(element => {
+                element.card = assignCard.assignCard(assignCard.array)
             });
             passStoryteller(array,io,room)
             //when a game round if finished, should remove the data from array for next round
-            let index = []
-            inGameArray.forEach(element => {
-                if(element.room == room){
-                    index.push(inGameArray.indexOf(element))
-                }
-            });
-            index.forEach(element => {
-                inGameArray.splice(element,1)
-            });
-            let votedIndex = []
-            playerVoted.forEach(element => {
-                if(element.room == room){
-                    votedIndex.push(playerVoted.indexOf(element))
-                }
-            });
+            // let index = []
+            // await inGameArray.forEach(element => {
+            //     if(element.room == room){
+            //         index.push(inGameArray.indexOf(element))
+                    
+            //     }
+            // });
+            // console.log(`the index is `);
+            // console.log(index);
+            // await index.forEach(element => {
+            //     inGameArray.splice(element,1)
+            // });
+            // let votedIndex = []
+            // await playerVoted.forEach(element => {
+            //     if(element.room == room){
+            //         votedIndex.push(playerVoted.indexOf(element))
+            //     }
+            // });
 
-            votedIndex.forEach(element => {
-                playerVoted.splice(element,1)
-            });
+            // await votedIndex.forEach(element => {
+            //     playerVoted.splice(element,1)
+            // });
+            inGameArray.length = 0;
+            playerVoted.length = 0;
+            console.log(`in game array:`);
+            console.log(inGameArray);
+            console.log(`player voted`);
+            console.log(playerVoted);
         })
 
 

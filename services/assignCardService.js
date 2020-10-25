@@ -35,5 +35,6 @@ const cardsResult = (playerInfo, array, res) => {
 module.exports = {
     display,
     array,
-    cardsResult
+    cardsResult,
+    assignCard
 }
