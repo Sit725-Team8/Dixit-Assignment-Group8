@@ -9,6 +9,8 @@ const passStoryteller = require('./storytellerService').passStoryteller
 //so we can have mutiple game process at the same time
 let inGameArray = []
 
+let playerVoted = []
+
 
 
 //started the socket io
@@ -48,16 +50,48 @@ const socketIo = (io) => {
         })
         /**
          * 
-         * @param {[storyTeller:boolean,
-         *          score: index,
+         * @param {[
          *          userName:user name(string)
          *          userId:userId(string)],
          *          voteCard:card bring in this round(index),
-         *          holdCard:card that belong to this user(index),
          *          room: room name
          *          } data 
          */
         socket.on('vote', data => {
+            playerVoted.push(data)
+            let room = data.room;
+            let i = 0
+            playerVoted.forEach(element => {
+                if (element.room == room) {
+                    i++
+                }
+            });
+            
+            //all player has voted 
+            if (i == 3) {
+                let playersForARoom = []
+                //push every player in that room to a array them send back to client side 
+                //as this point all the players action finished so no worry about players to cheat
+                inGameArray.forEach(element => {
+                    if (element.room == room) {
+                        playersForARoom.push(element)
+                    }
+                });
+                playersForARoom.forEach(player => {
+                    playerVoted.forEach(voted => {
+                        if(player.userId == voted.userId){
+                            player.voteCard = voted.voteCard
+                        }
+                    });
+                });
+                //then the result will calculated 
+                let result = calFunction(playersForARoom)
+                //send the result back to the client side 
+                io.to(room).emit('showResult', result)
+            }
+
+        })
+        socket.on('ChoiceCard',data=>{
             inGameArray.push(data)
             //foreach loop to get a room player
             let room = data.room;
@@ -67,11 +101,9 @@ const socketIo = (io) => {
                     i++
                 }
             });
-            //all player has voted 
-            //its 4 because the storyteller data has push in to array in socket storyTheme
-            //if you want to make the storyteller vote as well you should add logic that if this user is added
-            //the best way is dot make the storyteller vote
-            if (i == 4) {
+
+
+            if(i == 4){
                 let playersForARoom = []
                 //push every player in that room to a array them send back to client side 
                 //as this point all the players action finished so no worry about players to cheat
@@ -80,12 +112,9 @@ const socketIo = (io) => {
                         playersForARoom.push(element)
                     }
                 });
-                //then the result will calculated 
-                let result = calFunction(playersForARoom)
-                //send the result back to the client side 
-                io.to(room).emit('showResult', result)
+                io.to(room).emit('updateUI', playersForARoom)
             }
-
+            
         })
         //listen to joint the room
         socket.on('joinRoom', data => {
@@ -143,10 +172,7 @@ const socketIo = (io) => {
                 io.to(room).emit('startGame', currentPlayer)
             }
         })
-        socket.on('ChoiceCard',data=>{
-            // sending to all clients in room except sender
-            socket.broadcast.to(data.room).emit('updateUI',data)
-        })
+        
 
         /**
          * @param {userId, userName, storytellerNo} array
@@ -157,6 +183,17 @@ const socketIo = (io) => {
                 element.card = assignCard(assignCard.array)
             });
             passStoryteller(array,io,room)
+            //when a game round if finished, should remove the data from array for next round
+            let index = []
+            inGameArray.forEach(element => {
+                if(element.room == room){
+                    index.push(inGameArray.indexOf(element))
+                }
+            });
+            index.forEach(element => {
+                inGameArray.splice(element,1)
+            });
+
         })
 
 
