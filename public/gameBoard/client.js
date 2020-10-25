@@ -368,22 +368,22 @@ socket.on('updateUI', data => {
     document.getElementById("p4c6").style.display = "none";
     let count = 1;
 
-   
+
 
     let array = [];
     while (array.length < 4) {
         var r = Math.floor(Math.random() * 4);
         if (array.indexOf(r) === -1) array.push(r);
     }
+    console.log(array);
     let thisID = "guess"
-    //thisID.concat(count.toString())
     console.log("ID:   ", thisID)
     array.forEach(element => {
         let cardId = thisID + count;
-        console.log("card address:   ", cardId)
+        console.log(cardId);
         count++;
-
-        document.getElementById(cardId).src = mapCard([element].holdCard)
+        document.getElementById(cardId).src = './dixitCards/'+ data[element].holdCard+'.png'
+        console.log(data[element]);
     });
 
     
