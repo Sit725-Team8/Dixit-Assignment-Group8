@@ -84,7 +84,9 @@
       <workItem from="1603535017114" duration="151000" />
       <workItem from="1603583962308" duration="13000" />
       <workItem from="1603584948008" duration="4709000" />
-      <workItem from="1603604904006" duration="1994000" />
+      <workItem from="1603604904006" duration="2294000" />
+      <workItem from="1603607542290" duration="2178000" />
+      <workItem from="1603610086819" duration="1167000" />
     </task>
     <task id="LOCAL-00001" summary="matchmake working on gameboard and got rid of redundancies">
       <created>1603255118950</created>
@@ -116,26 +118,30 @@
     <option name="LAST_COMMIT_MESSAGE" value="matchmake working on gameboard and got rid of redundancies" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-7" y="0" width="653" height="687" key="DiffContextDialog" timestamp="1603275602629">
+    <state x="-7" y="0" width="653" height="687" maximized="true" key="DiffContextDialog" timestamp="1603611254620">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="-7" y="0" width="653" height="687" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1603275602629" />
-    <state width="1259" height="157" key="GridCell.Tab.0.bottom" timestamp="1603607169979">
+    <state x="-7" y="0" width="653" height="687" maximized="true" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1603611254620" />
+    <state width="1259" height="321" key="GridCell.Tab.0.bottom" timestamp="1603621570608">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="157" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1603607169979" />
-    <state width="1259" height="157" key="GridCell.Tab.0.center" timestamp="1603607169979">
+    <state width="1259" height="321" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1603621570608" />
+    <state width="1259" height="321" key="GridCell.Tab.0.center" timestamp="1603621570608">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="157" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1603607169979" />
-    <state width="1259" height="157" key="GridCell.Tab.0.left" timestamp="1603607169979">
+    <state width="1259" height="321" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1603621570608" />
+    <state width="1259" height="321" key="GridCell.Tab.0.left" timestamp="1603621570608">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="157" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1603607169979" />
-    <state width="1259" height="157" key="GridCell.Tab.0.right" timestamp="1603607169979">
+    <state width="1259" height="321" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1603621570608" />
+    <state width="1259" height="321" key="GridCell.Tab.0.right" timestamp="1603621570608">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="157" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1603607169979" />
+    <state width="1259" height="321" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1603621570608" />
+    <state x="102" y="46" key="RollbackChangesDialog" timestamp="1603621189123">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="102" y="46" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1603621189123" />
     <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603255154042">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -144,5 +150,9 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="-7" y="0" width="653" height="687" key="dock-window-1/0.0.1280.680@0.0.1280.680" timestamp="1603260179749" />
+    <state x="347" y="73" width="587" height="534" key="find.popup" timestamp="1603618862481">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="347" y="73" width="587" height="534" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1603618862481" />
   </component>
 </project>
