@@ -111,10 +111,10 @@ const findStoryteller = (array) => {
 
 
     }
-    if(playOnce == 3 && array[3].storytellerNo == 1) node = array[3]
-    if(playTwice == 3 && array[3].storytellerNo == 2) node = array[3]
+    if (playOnce == 3 && array[3].storytellerNo == 1) node = array[3]
+    if (playTwice == 3 && array[3].storytellerNo == 2) node = array[3]
     return node
-    
+
 
 }
 
@@ -139,7 +139,7 @@ const startGame = (data) => {
 
     selectedCard = null
     guessCard = null
-    
+
 
     $("#themeDialog").dialog('close');
     $("#chooseCardDialog").dialog('close');
@@ -428,7 +428,7 @@ socket.on('showResult', data => {
             console.log(`i emit next round`);
             socket.emit('nextRound', userInRoom)
         }
-    }, 4000);// 4s because 1s timeout would be used to pass storyteller
+    }, 4000); // 4s because 1s timeout would be used to pass storyteller
 })
 
 
@@ -477,13 +477,19 @@ socket.on('updateUI', data => {
         $("#voteBtn").show()
         $("#voteBtn").click(function () {
             if (guessCard != null) {
+
                 let realCard = guessCard.match(/\d+/g).map(Number); // replace all leading non-digits with nothing
                 console.log("cardIndex: ", realCard)
                 realCard = parseInt(realCard[1])
                 console.log("the card:  ", realCard)
 
-                vote(realCard);
-                $("#voteBtn").hide()
+                if (realCard == sessionStorage.getItem('holdCard')) {
+                    alert(`You cant vote for your own card`)
+                } else {
+                    vote(realCard);
+                    $("#voteBtn").hide()
+                }
+
             }
         })
     }
