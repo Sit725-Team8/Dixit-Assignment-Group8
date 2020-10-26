@@ -168,6 +168,7 @@ const startGame = (data) => {
     console.log(`storyteller is `);
     console.log(storyteller);
     if (userId == storyteller.userId) {
+        alert('You are the storyteller, please select a card and write a theme base on that')
         console.log(`you are the story teller`);
 
         sessionStorage.setItem('storyteller', 'true')
@@ -370,6 +371,7 @@ socket.on("storyDisplay", data => {
     console.log("theme recieved:  ", theme)
     $("#themeTag").text(("Theme: ", theme))
     if (userId != storyteller.userId) {
+        alert('Please select a card that you think match the theme below')
         $("#themeCardBtn").show()
 
         $("#themeCardBtn").click(function () {
@@ -422,6 +424,7 @@ socket.on('showResult', data => {
     document.getElementById('score4').innerHTML = (data[3].score)
 
     console.log(`go to next round after 5 s`);
+    alert('next round start in 5 seconds')
     setTimeout(() => {
         // nextRound
         if (sessionStorage.getItem('storyteller') == 'true') {
@@ -473,6 +476,7 @@ socket.on('updateUI', data => {
 
 
     if (sessionStorage.getItem('storyteller') == 'false') {
+        alert(`please vote for the card you think belong to storyteller, do not vote for yourself`)
         //can ask players to vote here
         $("#voteBtn").show()
         $("#voteBtn").click(function () {
