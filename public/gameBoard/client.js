@@ -1,4 +1,4 @@
-const { data } = require("jquery");
+// const { data } = require("jquery");
 
 const socket = io.connect('http://localhost:3030')
 
@@ -60,10 +60,10 @@ $(document).ready(function () {
     document.getElementById("chooseCardDialog").style.display = "none";
 
     //init
-    document.getElementById("p2c6").style.visibility = 'visible';
-    document.getElementById("p3c6").style.visibility = 'visible';
-    document.getElementById("p4c6").style.visibility = 'visible';
-    document.getElementById("p1c6").style.visibility = 'visible'
+    // document.getElementById("p2c6").style.visibility = 'visible';
+    // document.getElementById("p3c6").style.visibility = 'visible';
+    // document.getElementById("p4c6").style.visibility = 'visible';
+    // document.getElementById("p1c6").style.visibility = 'visible'
     //tie in with button when socket.emit is recieved
     $(".p1card").click(function () { //class of player 1 cards
         console.log("card clicked:    ", this.src) //test
@@ -110,15 +110,24 @@ const findStoryteller = (array) => {
 
 
 const startGame = (data) => {
-
+    let pnames = ['#p1name', '#p2name', '#p3name', '#p4name']
+    let pnameIndex = 0;
     if (cards.length < 6) //if the next round
     {
         data.forEach(element => {
             if (element.userId == userId) {
                 cards.push(element.card)
+                $(pnames[3]).text(element.userName);
+                console.log(element.userName);
+            }
+            else {
+                $(pnames[pnameIndex]).text(element.userName);
+                console.log(element.userName);
+                pnameIndex++;
             }
         });
-    }
+    } 
+   
     //when this round finished, this will be send back to server to decide next storyteller
     userInRoom = data;
     console.log('all user in room ');
@@ -362,9 +371,18 @@ socket.on("storyDisplay", data => {
  */
 //this socket is used to get result from server side
 socket.on('showResult', data => {
+    let results =  $('#results');
+    results.html('');
+    
     data.forEach(element => {
+        let html = "<div class='playerRes'> <span class='name'>" + element.userName + "</span> ";
+        html = html + "<span class='score'>" + element.score + "</span> </div>";
+        results.append(html);
+
+        console.log(element);
         if (element.userId == userId) {
             sessionStorage.setItem('score', element.score)
+            
         }
     });
 
@@ -385,9 +403,9 @@ socket.on('updateUI', data => {
 
     //display the cards that all players bring out for vote
 
-    document.getElementById("p2c6").style.visibility = 'hidden';
-    document.getElementById("p3c6").style.visibility = 'hidden';
-    document.getElementById("p4c6").style.visibility = 'hidden';
+    // document.getElementById("p2c6").style.visibility = 'hidden';
+    // document.getElementById("p3c6").style.visibility = 'hidden';
+    // document.getElementById("p4c6").style.visibility = 'hidden';
     let count = 1;
 
 

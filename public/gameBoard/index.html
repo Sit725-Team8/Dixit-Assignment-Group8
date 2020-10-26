@@ -8,6 +8,7 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="asset/css/mastercss.css" >
 <link rel="stylesheet" href="asset/css/all.css" >
+<link rel="stylesheet" href="asset/css/board.css" >
 
 <link rel="shortcut icon" href="asset/images/faviconicon.jpg">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -18,28 +19,11 @@
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
+  <link rel="stylesheet" href="./styles.css" >
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-  <!--GameBoard Html page background styles-->
-<style>
-body {
-	   font-family: "Gudea", sans-serif;
-     background-image: url(asset/images/dixit_background.jpg);
-     width: 100%;
-     height: 100%;
-   }
-</style>
-<!--  Game Board Table Styles-->
-<style type="text/css">
-
-.tftable {font-size:14px;color:yellow;width:35%;border-width: 1px;border-color: #9dcc7a;border-collapse: collapse; text-align:center;}
-.tftable th {font-size:14px;background-color:#abd28e;border-width: 1px;padding: 2px;border-style: solid;border-color: #9dcc7a;text-align:center;}
-.tftable td {font-family: "Consolas", Times New Roman, Times, serif !important; font-weight: bold; text-align:justify; font-size:14px;
-border-width: 1px;padding: 1px;border-style: solid;border-color: #9dcc7a;text-align:center;}
-
-</style>
-
+  <!--GameBoard Html page background styles--> 
 </head>
 <body>
 <div class="headbot"><div>
@@ -51,21 +35,26 @@ border-width: 1px;padding: 1px;border-style: solid;border-color: #9dcc7a;text-al
 </div>
 
 </div>
-<div style="text-align: center; color: red; font-size: 18px;">
+<div id="container"> 
+<div id="results"> 
+</div> 
+<span id="themeTag"> Theme: </span>
+ 
+
+<!-- <div style="text-align: center; color: red; font-size: 18px;">
 </br></br>
   User Name : <span id="data"> name</span>&nbsp;&nbsp;&nbsp;&nbsp;|| &nbsp;&nbsp;&nbsp;&nbsp;  
   Select Player : <span id="data1"> select player</span>   &nbsp;&nbsp;&nbsp;&nbsp; ||   &nbsp;&nbsp;&nbsp;&nbsp; 
 <a href="../homePage/homePage.html" value="Logout"> <span style="text-align: right; color: red; font-size: 18px;"><i class="fas fa-power-off"></i>  Close Game  </span>  </a>
-</div>
+</div> -->
 
-<!--Dialogs -->
-<div id="welcomeDialog" title="matchmaking">
+ <div id="welcomeDialog" title="matchmaking">
   <p>Searching for players, please wait....</p>
-</div>
+</div>  
 
 <div id="chooseCardDialog" title="Choose a card">
   <p>Select a card that matches the theme</p>
-</div>
+</div> 
 
 
 
@@ -75,164 +64,93 @@ border-width: 1px;padding: 1px;border-style: solid;border-color: #9dcc7a;text-al
     <input id="themeInput" type="text" class="validate">
     <a class="waves-effect waves-light btn" id="themeBtn">submit</a>
   </div>
+</div> 
+
+<div class="player hor">
+  <header class="playerName">
+    <span id='p1name'> Player 2 </span>
+  </header>
+  <content>      
+    <img src="asset/images/card_group.png" alt="image">
+  </content>
+  </div>  
+
+  <div class="player mid">
+    <header>
+    </header>
+    <content>    
+      <div class="player left">
+        <header class="playerName">
+          <span id='p2name'> Player 3 </span>
+        </header>
+        <content>      
+          <img src="asset/images/card_group.png" alt="image">            
+        </content>
+        </div>
+        <div class="player board">  
+          <div class="card">
+            <img id="guess1" class="midCard" src="dixitCards/1.PNG"  alt="">
+            
+           </div>
+
+           <div class="card">
+            <img id="guess2" class="midCard" src="dixitCards/10.PNG" alt="">
+            
+           </div>
+           <div class="card">
+            <img id="guess3" class="midCard" src="dixitCards/5.PNG" alt="">
+            
+           </div>
+           <div class="card">
+            <img id="guess4" class="midCard" src="dixitCards/20.PNG" alt="">
+            
+           </div> 
+        </div>    
+        <div class="player right"> 
+          <header class="playerName">
+            <span id='p3name'> Player 4 </span>
+          </header>
+          <content>      
+            <img src="asset/images/card_group.png" alt="image">
+          </content>       
+          </div>   
+    </content>
+    </div>  
+  <div class="player hor">
+    <header class="playerName">
+      <span id='p4name'> Player 1 (You) </span>
+    </header>
+    <content>      
+       <div class="card">
+        <img class="p1card" id="p1c1" src="dixitCards/1.PNG"  alt="">
+       </div>
+       <div class="card">
+        <img class="p1card" id="p1c2" src="dixitCards/2.PNG" alt="">
+       </div>
+       <div class="card">
+        <img class="p1card" id="p1c3" src="dixitCards/5.PNG" alt="">
+       </div>
+       <div class="card">
+        <img class="p1card" id="p1c4" src="dixitCards/6.PNG" alt="">
+       </div>
+       <div class="card">
+        <img class="p1card" id="p1c5" src="dixitCards/8.PNG" alt="">
+       </div>
+       <div class="card">
+        <img class="p1card" id="p1c6" src="dixitCards/8.PNG" alt="">
+       </div>
+       <input class='btn' type="button" value="Vote" name="voteBtn" id="voteBtn">
+       <input class='btn' type="button" value="Guess" name="themeCardBtn" id="themeCardBtn">      
+    </content>
+    </div>  
 </div>
-
-
 <!---Structure Start--->
 </br></br>
-<center>
-  <table class="tftable" cellspacing="0" border="0"><colgroup span="8" width="64"></colgroup>
-    <tr>
-      <td  colspan=10 style="background-color: springgreen; color: black; font-size: 22px;">Dixit Game Playing Board</td>
-    </tr>
-    <tr>
-      <td colspan=2 style="background-color: darkorchid;" >::Score Board::</td>
 
-      <td  colspan=6  ><b>Player 3</b></td>
-      <td  colspan=2 rowspan=6  ></td>
-    </tr>
-    <tr>
-      <td  >PlyName</td>
-      <td  >Score</td>
-      <!--Below image please assign in from database randomly (This is only Example Link)-->
-      <td  rowspan=5  ><img id="p3c1" src="dixitCards/BOC.PNG" width="60" height="80" alt=""></td>
-      <td  rowspan=5  ><img id="p3c2" src="dixitCards/BOC.PNG" width="60" height="80" alt=""></td>
-      <td  rowspan=5  ><img id="p3c3" src="dixitCards/BOC.PNG" width="60" height="80" alt=""></td>
-      <td  rowspan=5  ><img id="p3c4" src="dixitCards/BOC.PNG" width="60" height="80" alt=""></td>
-      <td  rowspan=5  ><img id="p3c5" src="dixitCards/BOC.PNG" width="60" height="80" alt=""></td>
-      <td  rowspan=5  ><img id="p3c6" src="dixitCards/BOC.PNG" width="60" height="80" alt=""></td>
-      
-    </tr>
-    <tr>
-      <td  >Player_1</td>
-      <td  >0</td>
-    </tr>
-    <tr>
-      <td  >Player_2</td>
-      <td  >0</td>
-    </tr>
-    <tr>
-      <td  >Player_3</td>
-      <td  >0</td>
-    </tr>
-    <tr>
-      <td  >Player_4</td>
-      <td  >0</td>
-    </tr>
-    <tr>
-      <td  ><br></td>
-      <td  ><br></td>
-
-      <td ></br></td><td ></br></td>
-    </tr>
-    <tr>
-      <td  colspan=3 height="20"  ><b>Player 2</b></td>
-      <td  colspan=4  >Game Board</td>
-      <td  colspan=3  valign=top><b>Player 4</b></td>
-    </tr>
-    <tr>
-      <td ></td>
-      <td colspan=1 ></td>
-      <td ></br></td>
-
-      <!--guess slot 1 and 2-->
-      <td  colspan=2 rowspan=6  ><img id="guess1" class="midCard" src="dixitCards/36.PNG" width="60" height="80" alt=""></td>
-      <td  colspan=2 rowspan=6  ><br><img id="guess2" class="midCard" src="dixitCards/36.PNG" width="60" height="80" alt=""></td>
-
-
-      <td ></td>
-      <td ></td>
-      <td ></br></td>
-    </tr>
-    <tr>
-            <!--Below image please assign in from database randomly (This is only Example Link)-->
-      <!--Player 2 cards 1-3-->
-      <td  rowspan=3 valign=top><img id="p2c1" src="dixitCards/BOC.PNG" width="60" height="80" alt=""></td>
-      <td  rowspan=3 valign=top><img id="p2c2" src="dixitCards/BOC.PNG" width="60" height="80" alt=""></td>
-      <td  rowspan=4 valign=top><img id="p2c3" src="dixitCards/BOC.PNG" width="60" height="80" alt=""></td>
-      <!--Player 4 cards 1-3-->
-
-
-
-      <td  rowspan=4 valign=top><img id="p4c1" src="dixitCards/BOC.PNG" width="60" height="80" alt=""></td>
-      <td  rowspan=4  valign=top><img id="p4c2" src="dixitCards/BOC.PNG" width="60" height="80" alt=""></td>
-      <td  rowspan=4  valign=top><img id="p4c3" src="dixitCards/BOC.PNG" width="60" height="80" alt=""></td>
-    </tr>
-    <tr>
-    </tr>
-    <tr>
-    </tr>
-    <tr>
-    </tr>
-    <tr>
-    </tr>
-    <tr>
-      <!--Player 2 cards 4-6-->
-      <td  rowspan=6  valign=top><br><img id="p2c4" src="dixitCards/BOC.PNG" width="60" height="80" alt=""><br><br></td>
-      <td  rowspan=6  valign=top><br><img id="p2c5" src="dixitCards/BOC.PNG" width="60" height="80" alt=""><br></td>
-      <td  rowspan=6  valign=top><br><img id="p2c6" src="dixitCards/BOC.PNG" width="60" height="80" alt=""><br></td>
-
-      <!--Guess box 3 & 4-->
-      <td  colspan=2 rowspan=6  > <img id="guess3" class="midCard" src="dixitCards/36.PNG" width="60" height="80" alt=""> </td>
-      <td  colspan=2 rowspan=6  ><img id="guess4" class="midCard" src="dixitCards/36.PNG" width="60" height="80" alt=""></td>
-
-      <!--Player 4 cards 4-6-->
-      <td  rowspan=6  ><img id="p4c4" src="dixitCards/BOC.PNG" width="60" height="80" alt=""></td>
-      <td  rowspan=6  ><img id="p4c5" src="dixitCards/BOC.PNG" width="60" height="80" alt=""></td>
-      <td  rowspan=6  ><img id="p4c6" src="dixitCards/BOC.PNG" width="60" height="80" alt=""></td>
-    </tr>
-    <tr>
-    </tr>
-    <tr>
-    </tr>
-    <tr>
-    </tr>
-    <tr>
-    </tr>
-    <tr>
-    </tr>
-    <tr>
-      <td  height="20"  valign=top><br></td>
-      <td   valign=top><br></td><td   valign=top><br></td>
-      <td  colspan=2  ><input type="button" value="Vote" name="voteBtn" id="voteBtn"></td>
-      <td  colspan=2  ><input type="button" value="Guess" name="themeCardBtn" id="themeCardBtn"></td>
-      <td   valign=top><br></td>
-  
-      <td   valign=top><br></td><td   valign=top><br></td>
-    </tr>
-    <tr>
-      <td  colspan=2 rowspan=6  ><br></td>
-      <!--Player one cards (this players)-->
-      <td  rowspan=5  ><img id="p1c1" class="p1card" src="dixitCards/1.PNG" width="60" height="80" alt=""></td>
-      <td  rowspan=5  ><img id="p1c2" class="p1card" src="dixitCards/1.PNG" width="60" height="80" alt=""></td>
-      <td  rowspan=5  ><img id="p1c3" class="p1card" src="dixitCards/1.PNG" width="60" height="80" alt=""></td>
-      <td  rowspan=5  ><img id="p1c4" class="p1card" src="dixitCards/1.PNG" width="60" height="80" alt=""></td>
-      <td  rowspan=5  ><img id="p1c5" class="p1card" src="dixitCards/1.PNG" width="60" height="80" alt=""></td>
-      <td  rowspan=5  ><img id="p1c6" class="p1card" src="dixitCards/1.PNG" width="60" height="80" alt=""></td>
-
-      
-      <td  colspan=2 rowspan=6  ><input type="button" value="Finish Game" style="background-color: darkviolet; height: 40px; width: 100px; color: white;" name="finishgame" id="finishgame"></td>
-      </tr>
-    <tr>
-    </tr>
-    <tr>
-    </tr>
-    <tr>
-    </tr>
-    <tr>
-    </tr>
-    <tr>
-      <td  colspan=6  ><b>Player 1(YOU)</b></td>
-
-    </tr>
-  </table>
-<h2 style="color: white" id="themeTag">Theme: </h2>
-
-</center>
 <!---End Form--->
 <script>
-  document.getElementById("data").innerHTML=localStorage.getItem("txtValue");
-  document.getElementById("data1").innerHTML=localStorage.getItem("txtValue1");
+  // document.getElementById("data").innerHTML=localStorage.getItem("txtValue");
+  // document.getElementById("data1").innerHTML=localStorage.getItem("txtValue1");
  // document.getElementById("selectimage").src=localStorage.getItem("txtValue2");
 </script> 
 </div>

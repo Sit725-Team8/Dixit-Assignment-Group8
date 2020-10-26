@@ -4,3 +4,23 @@
     background-size: 100% 100%;
     height: 100%;
 }
+body {
+    background-color: #9dcc7a;
+	 font-family: "Gudea", sans-serif;
+     /* background-image: url('asset/images/dixit_background2.png'); */
+     width: 100%;
+     height: 100%;
+   }
+
+.tftable {font-size:14px;color:yellow;width:35%;border-width: 1px;border-color: #9dcc7a;border-collapse: collapse; text-align:center;}
+.tftable th {font-size:14px;background-color:#abd28e;border-width: 1px;padding: 2px;border-style: solid;border-color: #9dcc7a;text-align:center;}
+.tftable td {font-family: "Consolas", Times New Roman, Times, serif !important; font-weight: bold; text-align:justify; font-size:14px;
+border-width: 1px;padding: 1px;border-style: solid;border-color: #9dcc7a;text-align:center;}
+
+#container {
+    background-image: url('assets/images/board.png');
+    background-color: aqua;
+    float:left;
+    width: 70%; 
+    margin-left: 15%;
+}

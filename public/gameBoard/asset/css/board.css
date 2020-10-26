@@ -1,0 +1,194 @@
+body {
+    
+    font-family: "Gudea", sans-serif;
+    width: 100%;
+    height: 100%;
+  }
+
+  .tftable {font-size:14px;color:yellow;width:35%;border-width: 1px;border-color: #9dcc7a;border-collapse: collapse; text-align:center;}
+.tftable th {font-size:14px;background-color:#abd28e;border-width: 1px;padding: 2px;border-style: solid;border-color: #9dcc7a;text-align:center;}
+.tftable td {font-family: "Consolas", Times New Roman, Times, serif !important; font-weight: bold; text-align:justify; font-size:14px;
+border-width: 1px;padding: 1px;border-style: solid;border-color: #9dcc7a;text-align:center;}
+
+#Profile {
+   background-image: url('assets/createProfilePageBackground.jpg');
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   height: 100%;
+}
+
+#container {
+   background-image: url('../images/dixit_background2.png'); 
+   background-repeat: repeat;
+   float:left;
+   width: 50%; 
+   margin-left: 25%;
+   padding: 0;
+}
+
+.player.hor {
+   height: 150px;
+   width:100%;
+   text-align: center;
+}
+
+.player.hor img {
+    width:300px;
+    height: 100px;
+ }
+.player.left {
+  height: 400px;
+  float: left;
+  margin-left: 0px;
+  width:200px;
+  padding-top: 50px;
+  /* width:100%; */
+  /* text-align: center; */
+} 
+
+ .player.left img { 
+    height: 100px;
+    width:200px; 
+    transform: rotate(90deg);
+ }
+
+ 
+ .player.left header.playerName {
+    color: bisque;
+    font-size: 18pt;
+    text-align: center;
+    height: 50px;
+    float: left;
+    margin-left: 50px;;
+    margin-bottom: 50px;;
+ }
+
+.player.right {
+   height: 200px;
+   float: left;
+   width:200px;
+   padding-top: 50px;
+   margin-right: 20px;;
+   /* width:100%; */
+   /* text-align: center; */
+}
+
+.player.right img { 
+    height: 100px;
+    width:200px; 
+    transform: rotate(90deg);
+ }
+ .player.right header.playerName {
+    color: bisque;
+    font-size: 18pt;
+    text-align: center;
+    height: 50px;
+    float: left;
+    margin-bottom: 50px;
+ }
+.player.mid {
+   margin-top: 0px;;
+   margin-bottom: 10px;
+   height: 420px;
+   width:860px;
+   text-align: center;
+   float: left;
+}
+.player.board { 
+   float: left;
+   width:400px;    
+   background-color: darkgreen;
+   border: 5px solid #000;
+   background-repeat: repeat;
+   height: 400px;
+   margin: 20px;;
+   padding: 20px;
+}
+
+ 
+header.playerName {
+   color: bisque;
+   font-size: 18pt;
+   text-align: center;
+ }
+
+.player.hor .card {
+   float: left; 
+   margin-left: 10px; 
+}
+.player.hor .card:first-of-type {
+   float: left; 
+   margin-left: 100px; 
+}
+.player.hor .card img {    
+   width: 100px;
+   height: 100px;
+}
+
+.player.board .card {
+   float: left; 
+   margin-left: 50px; 
+   width: 100px;
+   height:150px;
+}
+.player.board  .card:first-of-type {
+   float: left; 
+   margin-left: 50px; 
+}
+.player.board  .card img {    
+   width: 100px;
+}
+.player.board  .card .info {    
+  background-color: burlywood;
+  font-weight: bold;
+}
+content {
+    display: block;
+}
+
+
+.btn
+{
+    width: 100%;   
+    height: 100px;
+    margin-bottom: 5px;;
+    font-size: 14pt !important;
+    background-color: burlywood !important
+}
+
+div#results {
+    width: 100%;
+    height: 50px;
+    background-color: burlywood;
+}
+div.playerRes {
+    width: 20%;    
+    float: left;
+    margin-left: 2%;
+    height: 50px;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 14pt;
+}
+.name { 
+    width: 50%;
+    float: left;
+    color: white;
+}
+.score { 
+    float: right;
+    color: black;
+}
+#themeTag {
+    display: block;
+    width: 100%;
+    height: 40px;
+    background-color: burlywood;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14pt;    
+    margin-top: 5px;
+
+}
