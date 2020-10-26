@@ -111,10 +111,10 @@ const findStoryteller = (array) => {
 
 
     }
-    if(playOnce == 3 && array[3].storytellerNo == 1) node = array[3]
-    if(playTwice == 3 && array[3].storytellerNo == 2) node = array[3]
+    if (playOnce == 3 && array[3].storytellerNo == 1) node = array[3]
+    if (playTwice == 3 && array[3].storytellerNo == 2) node = array[3]
     return node
-    
+
 
 }
 
@@ -139,6 +139,8 @@ const startGame = (data) => {
 
     selectedCard = null
     guessCard = null
+
+
     $("#themeDialog").dialog('close');
     $("#chooseCardDialog").dialog('close');
     // let rawcards = sessionStorage.getItem('cards')
@@ -321,15 +323,6 @@ const vote = (card) => {
     socket.emit('vote', payload)
 }
 
-//function to start next round, maybe a button or timer 
-const nextRound = () => {
-    let room = sessionStorage.getItem('room')
-    //only storyteller send the req to server to avoid duplicate respond
-    if (userId == storyteller.userId) {
-        socket.emit('nextRound', userInRoom)
-    }
-
-}
 
 
 
@@ -430,8 +423,12 @@ socket.on('showResult', data => {
 
     console.log(`go to next round after 5 s`);
     setTimeout(() => {
-        nextRound()
-    }, 5000);
+        // nextRound
+        if (sessionStorage.getItem('storyteller') == 'true') {
+            console.log(`i emit next round`);
+            socket.emit('nextRound', userInRoom)
+        }
+    }, 4000); // 4s because 1s timeout would be used to pass storyteller
 })
 
 
@@ -480,13 +477,19 @@ socket.on('updateUI', data => {
         $("#voteBtn").show()
         $("#voteBtn").click(function () {
             if (guessCard != null) {
+
                 let realCard = guessCard.match(/\d+/g).map(Number); // replace all leading non-digits with nothing
                 console.log("cardIndex: ", realCard)
                 realCard = parseInt(realCard[1])
                 console.log("the card:  ", realCard)
 
-                vote(realCard);
-                $("#voteBtn").hide()
+                if (realCard == sessionStorage.getItem('holdCard')) {
+                    alert(`You cant vote for your own card`)
+                } else {
+                    vote(realCard);
+                    $("#voteBtn").hide()
+                }
+
             }
         })
     }

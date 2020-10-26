@@ -193,7 +193,10 @@ const socketIo = (io) => {
             await array.forEach(element => {
                 element.card = assignCard.assignCard(assignCard.array)
             });
-            passStoryteller(array,io,room)
+            setTimeout(() => {
+                passStoryteller(array,io,room)
+            }, 1000);
+            
             //when a game round if finished, should remove the data from array for next round
             
             inGameArray.length = 0;
