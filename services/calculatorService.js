@@ -29,16 +29,22 @@ const calculate = array => {
     //everyone score for this round is 2 except for the storyteller
     if (i == array.length - 1) {
         array.forEach(element => {
-            if (!element.storyTeller) element.score += 2;
-            
+            if (!element.storyTeller) {
+                element.score = +element.score + 2;
+            }
+
         });
     }
     //not everyone got right vote
     //the ppl vote right and storyteller score 3 in this round
     else {
         array.forEach(element => {
-            if (element.storyTeller) element.score += 3;
-            else if (element.voteCard == storytellerCard) element.score += 3;
+            if (element.storyTeller){
+                element.score = +element.score + 3;
+            } 
+            else if (element.voteCard == storytellerCard) {
+                element.score = +element.score + 3;
+            }
         });
         //because some user voted wrong
         //call bonus score function 
@@ -65,7 +71,7 @@ const bonusScore = array => {
             //add 1 score to the card owner 
             array.forEach(CardOwner => {
                 if (element.voteCard == CardOwner.holdCard) {
-                    CardOwner.score++;
+                    CardOwner.score = +CardOwner.score + 1;
                 }
             });
         }
