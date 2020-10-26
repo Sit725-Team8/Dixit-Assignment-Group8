@@ -1,10 +1,13 @@
+//const { data } = require("jquery");
+
 const socket = io.connect('http://localhost:3030')
 
 let userId = sessionStorage.getItem('userId')
 let userName = sessionStorage.getItem('userName')
 let rawcards = sessionStorage.getItem('cards')
 let cards = rawcards.split(",").map(Number);
-let score = sessionStorage.getItem('score')
+
+
 
 
 let storyteller;
@@ -50,12 +53,16 @@ $(document).ready(function () {
     console.log("user id:    ", sessionStorage.getItem('userId'));
     console.log("score is :    ", sessionStorage.getItem('score'));
     console.log('user cards are');
+    // let rawcards = sessionStorage.getItem('cards')
+    // let cards = rawcards.split(",").map(Number);
     console.log(cards);
     console.log("length of cards:   ", cards.length)
     document.getElementById("voteBtn").style.display = "none"; //design choice
     document.getElementById("themeCardBtn").style.display = "none"; //design choice
     document.getElementById("themeDialog").style.display = "none"; //hide ui dialog (Bugged)
     document.getElementById("chooseCardDialog").style.display = "none";
+
+
     //tie in with button when socket.emit is recieved
     $(".p1card").click(function () { //class of player 1 cards
         console.log("card clicked:    ", this.src) //test
@@ -90,19 +97,55 @@ $(document).ready(function () {
 
 
 const findStoryteller = (array) => {
+
+    let playOnce = 0;
+    let playTwice = 0;
+    let node
     for (let index = 0; index < array.length - 1; index++) {
+        if (array[index].storytellerNo == 1) playOnce++;
+        if (array[index].storytellerNo == 2) playTwice++;
         if (array[index].storytellerNo - array[index + 1].storytellerNo == 1) {
 
-            return array[index]
+            node = array[index]
         }
 
+
     }
+    if (playOnce == 3 && array[3].storytellerNo == 1) node = array[3]
+    if (playTwice == 3 && array[3].storytellerNo == 2) node = array[3]
+    return node
+
 
 }
 
 
 const startGame = (data) => {
+    //init
+    $("#themeCardBtn").off()
+    $("#themeBtn").off()
+    $("#voteBtn").off()
+    document.getElementById("p2c6").style.visibility = 'visible';
+    document.getElementById("p3c6").style.visibility = 'visible';
+    document.getElementById("p4c6").style.visibility = 'visible';
+    document.getElementById("p1c6").style.visibility = 'visible';
+    document.getElementById('guess1').src = './dixitCards/36.PNG'
+    document.getElementById('guess2').src = './dixitCards/36.PNG'
+    document.getElementById('guess3').src = './dixitCards/36.PNG'
+    document.getElementById('guess4').src = './dixitCards/36.PNG'
+    document.getElementById("voteBtn").style.display = "none"; //design choice
+    document.getElementById("themeCardBtn").style.display = "none"; //design choice
+    document.getElementById("themeDialog").style.display = "none"; //hide ui dialog (Bugged)
+    document.getElementById("chooseCardDialog").style.display = "none";
 
+    selectedCard = null
+    guessCard = null
+
+
+    $("#themeDialog").dialog('close');
+    $("#chooseCardDialog").dialog('close');
+    // let rawcards = sessionStorage.getItem('cards')
+    // let cards = rawcards.split(",").map(Number);
+    let score = sessionStorage.getItem('score')
     if (cards.length < 6) //if the next round
     {
         data.forEach(element => {
@@ -111,6 +154,10 @@ const startGame = (data) => {
             }
         });
     }
+
+    console.log(`cards are`);
+    console.log(cards);
+    console.log(`score is ${score}`);
     //when this round finished, this will be send back to server to decide next storyteller
     userInRoom = data;
     console.log('all user in room ');
@@ -118,9 +165,14 @@ const startGame = (data) => {
 
     //the information about storyteller
     storyteller = findStoryteller(data)
+    console.log(`storyteller is `);
+    console.log(storyteller);
     if (userId == storyteller.userId) {
+        alert('You are the storyteller, please select a card and write a theme base on that')
         console.log(`you are the story teller`);
+
         sessionStorage.setItem('storyteller', 'true')
+        console.log(sessionStorage.getItem('storyteller'));
         $("#themeCardBtn").show();
 
         $("#themeCardBtn").click(function () {
@@ -155,6 +207,7 @@ const startGame = (data) => {
     } else {
         console.log(`you are not the storyteller `);
         sessionStorage.setItem('storyteller', 'false')
+        console.log(sessionStorage.getItem('storyteller'));
         $('#themeDialog').dialog('close');
     }
     document.getElementById("p1c1").src = mapCard(cards[0])
@@ -187,11 +240,20 @@ function mapCard(cardsIndex) {
 const ChoiceCard = (cardSelected) => {
     sessionStorage.setItem('holdCard', cardSelected)
     //delete card from hand
+    // let rawcards = sessionStorage.getItem('cards')
+    // let cards = rawcards.split(",").map(Number);
     cards = removeCardFromHand(cards, cardSelected)
+    console.log(`the card array after remove is `);
+    console.log(cards)
 
     //change own ui here
     //because if we change own ui here we dot have to send the card data which will broadcast to everyone
-
+    document.getElementById("p1c1").src = mapCard(cards[0])
+    document.getElementById("p1c2").src = mapCard(cards[1])
+    document.getElementById("p1c3").src = mapCard(cards[2])
+    document.getElementById("p1c4").src = mapCard(cards[3])
+    document.getElementById("p1c5").src = mapCard(cards[4])
+    document.getElementById("p1c6").style.visibility = 'hidden'
 
 
 
@@ -201,7 +263,7 @@ const ChoiceCard = (cardSelected) => {
     } else {
         let payload = {
             storyTeller: storytellerBool,
-            score: score,
+            score: sessionStorage.getItem('score'),
             userName: userName,
             userId: userId,
             room: sessionStorage.getItem('room'),
@@ -225,9 +287,9 @@ const ChoiceCard = (cardSelected) => {
 const removeCardFromHand = (cardArray, cardToBeRemove) => {
     let index = cardArray.indexOf(cardToBeRemove)
     //delete that card from hand
-    if (index > -1) cardArray.splice(index, 1)
-    else console.log(`err`);
-
+    if (index > -1) {
+        cardArray.splice(index, 1)
+    } else console.log(`err`);
     //return the deleted array
     return cardArray
 }
@@ -240,7 +302,7 @@ const removeCardFromHand = (cardArray, cardToBeRemove) => {
 const sendMessage = (message) => {
     let payload = {
         storyTeller: true,
-        score: score,
+        score: sessionStorage.getItem('score'),
         userName: userName,
         userId: userId,
         room: sessionStorage.getItem('room'),
@@ -262,18 +324,6 @@ const vote = (card) => {
     socket.emit('vote', payload)
 }
 
-//function to start next round, maybe a button or timer 
-const nextRound = () => {
-    let room = sessionStorage.getItem('room')
-    //only storyteller send the req to server to avoid duplicate respond
-    if (userId == storyteller.userId) {
-        socket.emit('nextRound', {
-            userInRoom,
-            room
-        })
-    }
-
-}
 
 
 
@@ -321,6 +371,7 @@ socket.on("storyDisplay", data => {
     console.log("theme recieved:  ", theme)
     $("#themeTag").text(("Theme: ", theme))
     if (userId != storyteller.userId) {
+        alert('Please select a card that you think match the theme below')
         $("#themeCardBtn").show()
 
         $("#themeCardBtn").click(function () {
@@ -354,9 +405,35 @@ socket.on('showResult', data => {
             sessionStorage.setItem('score', element.score)
         }
     });
+    console.log("username:  ", data[0].userName)
+    console.log("score:  ", data[0].score)
+    console.log("username:  ", data[1].userName)
+    console.log("score:  ", data[1].score)
+    console.log("username:  ", data[2].userName)
+    console.log("score:  ", data[2].score)
+    console.log("username:  ", data[3].userName)
+    console.log("score:  ", data[3].score)
 
+    document.getElementById('playerN1').innerHTML = (data[0].userName)
+    document.getElementById('score1').innerHTML = (data[0].score)
+    document.getElementById('playerN2').innerHTML = (data[1].userName)
+    document.getElementById('score2').innerHTML = (data[1].score)
+    document.getElementById('playerN3').innerHTML = (data[2].userName)
+    document.getElementById('score3').innerHTML = (data[2].score)
+    document.getElementById('playerN4').innerHTML = (data[3].userName)
+    document.getElementById('score4').innerHTML = (data[3].score)
 
+    console.log(`go to next round after 5 s`);
+    alert('next round start in 5 seconds')
+    setTimeout(() => {
+        // nextRound
+        if (sessionStorage.getItem('storyteller') == 'true') {
+            console.log(`i emit next round`);
+            socket.emit('nextRound', userInRoom)
+        }
+    }, 4000); // 4s because 1s timeout would be used to pass storyteller
 })
+
 
 /**
  * @param {[storyTeller:boolean,
@@ -372,9 +449,9 @@ socket.on('updateUI', data => {
 
     //display the cards that all players bring out for vote
 
-    document.getElementById("p2c6").style.display = "none";
-    document.getElementById("p3c6").style.display = "none";
-    document.getElementById("p4c6").style.display = "none";
+    document.getElementById("p2c6").style.visibility = 'hidden';
+    document.getElementById("p3c6").style.visibility = 'hidden';
+    document.getElementById("p4c6").style.visibility = 'hidden';
     let count = 1;
 
 
@@ -391,24 +468,40 @@ socket.on('updateUI', data => {
         let cardId = thisID + count;
         console.log(cardId);
         count++;
-        document.getElementById(cardId).src = './dixitCards/'+ data[element].holdCard+'.png'
+        document.getElementById(cardId).src = './dixitCards/' + data[element].holdCard + '.png'
         console.log(data[element]);
     });
 
-    
+
 
 
     if (sessionStorage.getItem('storyteller') == 'false') {
+        alert(`please vote for the card you think belong to storyteller, do not vote for yourself`)
         //can ask players to vote here
         $("#voteBtn").show()
         $("#voteBtn").click(function () {
             if (guessCard != null) {
-                console.log("card voted for", guessCard)
-                vote(guessCard);
-                $("#voteBtn").hide()
+
+                let realCard = guessCard.match(/\d+/g).map(Number); // replace all leading non-digits with nothing
+                console.log("cardIndex: ", realCard)
+                realCard = parseInt(realCard[1])
+                console.log("the card:  ", realCard)
+
+                if (realCard == sessionStorage.getItem('holdCard')) {
+                    alert(`You cant vote for your own card`)
+                } else {
+                    vote(realCard);
+                    $("#voteBtn").hide()
+                }
+
             }
         })
     }
 
 
+})
+
+socket.on('endGame', () => {
+    alert('The game has finished, you can see the scoreboard at left top, thanks for your playing')
+    console.log(`should end game`);
 })
